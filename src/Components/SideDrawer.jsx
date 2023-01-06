@@ -15,6 +15,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { Paper } from '@mui/material';
 
 
 
@@ -24,9 +25,16 @@ const SideDrawer = () => {
     
      
   return (
-    <>
-    
-           <List>
+    <>  
+    <Paper
+    elevation={5}
+    sx={{
+      padding: "2rem",
+      marginTop: "1rem",
+      border: "1px solid #2673E2",
+    }}
+    >
+      <List>
             {['Part 1 Registration', 'Part 2 Registration', 'Update Transfer', 'Update Promotion'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
@@ -55,6 +63,9 @@ const SideDrawer = () => {
               
             ))}
           </List>
+    </Paper>
+          
+          
       
     </>
     
