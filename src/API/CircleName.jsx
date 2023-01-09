@@ -4,14 +4,16 @@ import { v4 } from 'uuid';
 import moment from 'moment/moment';
 
 
-const CircleName = () => {
+
+ const CircleName = () => {
 
     /* Defining Headers for Axios*/
 
-const officeNamesApiURL =  "https://api.postalpincode.in/pincode/600001";
+const officeNamesApiURL =  "https://gateway.cept.gov.in/currency/getexchangerates/0";
 var config = {
                 headers: {
-                    
+                    "x-request-id": v4(),
+                        "request-date":moment().toISOString(true),                  
                     },
              }  
 
@@ -34,7 +36,9 @@ rendering on page loading using useEffect*/
         FetchCall();
         }, [])
   return (
-    <h1>Circle Name</h1>
+  <>
+  <h1> {officeNames}</h1>
+  </>
   )
 }
 

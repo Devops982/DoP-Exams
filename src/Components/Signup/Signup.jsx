@@ -17,6 +17,7 @@ import { Button,
     FormLabel
   } from "@mui/material";
   import {
+    AccountCircle,
     ClearRounded,
     DoneRounded,
     VisibilityOffRounded,
@@ -42,7 +43,7 @@ const numberValidation = (value) => {
   return value && numRegex.test(value);
 };
 
-export default function Signup() {
+export default function Signup(props) {
  
 
   const [form, setform] = useState({
@@ -85,13 +86,16 @@ export default function Signup() {
   };
   const [circleName, setcircleName] = useState('')
   const [regionName, setregionName] = useState('')
+  const [divisionName, setdivisionName] = useState('')
   const handleChange = (event) => {    
-    setregionName(event.target.value);
-  };
-  const handleChangeRegionName = (event) => {    
     setcircleName(event.target.value);
   };
-
+  const handleChangeRegionName = (event) => {    
+    setregionName(event.target.value);
+  };
+  const handleChangeParentDivision = (event) => {    
+    setdivisionName(event.target.value);
+  };
   return (
     <>
     <Container component={"main"} maxWidth="xl">
@@ -258,53 +262,59 @@ export default function Signup() {
               />
             </Grid>
               <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-              <InputLabel id="Parent-Circle-label" required>Parent Circle</InputLabel>
-              <Select 
-              labelId="Parent-Circle-label"
-              id="Parent-Cirlce-select"
-              value={circleName}
-              label="Parent-Cirlce-select"
-              onChange={handleChange}
+                <FormControl fullWidth>
+                  <InputLabel required > Parent Circle</InputLabel>
+                  <Select
+                  value={circleName}
+                  onChange={handleChange}
+                  label= "Parent Circle"
+                  size="small"
+                  >
+                     
+                    <MenuItem value={10}></MenuItem>
+                    <MenuItem value={20}>Kerala</MenuItem>
+                    <MenuItem value={30}>Karnataka</MenuItem>
+                  </Select>
+                  
+
+                </FormControl>
+                
               
-              >
-                <MenuItem value={10}>Tamil Nadu</MenuItem>
-                <MenuItem value={20}>Kerala</MenuItem>
-                <MenuItem value={30}>Karnataka</MenuItem>
-              </Select>
-              </FormControl>
-              <CircleName/>
             </Grid>
               <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-              <InputLabel id="Parent-Region-Name" required>Parent Region</InputLabel>
+              <InputLabel id="Parent-Region-label" required >Parent Region</InputLabel>
               <Select 
-              labelId="Parent-Region-Name"
-              id="Parent-Region-Name"
+              labelId="Parent-Region-select"
+              id="Parent-Region"
               value={regionName}
               label="Parent Region"
               onChange={handleChangeRegionName}
-              
+              size="small"
               >
-                <MenuItem value={1}>Chennai City</MenuItem>
-                <MenuItem value={2}>Southern</MenuItem>
-                <MenuItem value={3}>Central</MenuItem>
+                <MenuItem value={4}>Chennai City</MenuItem>
+                <MenuItem value={5}>Southern</MenuItem>
+                <MenuItem value={6}>Central</MenuItem>
               </Select>
               </FormControl>
               
             </Grid>
               <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="off"
-                name="parentDivision"
-                id="parentDivision"
-                label="Parent Division"
-                size="small"
-                helperText=""
-                required
-                fullWidth
-               
-              />
+              <FormControl fullWidth>
+                  <InputLabel required size="small"> Parent Division</InputLabel>
+                  <Select
+                  value={divisionName}
+                  onChange={handleChangeParentDivision}
+                  label= "Parent Circle"
+                  size="small"
+                  >
+                    <MenuItem value={10}>Chennai City North</MenuItem>
+                    <MenuItem value={20}>Chennai City South</MenuItem>
+                    <MenuItem value={30}>Tambaram</MenuItem>
+                  </Select>
+
+                </FormControl>
+              
             </Grid>
               <Grid item xs={12} sm={6}>
               <TextField

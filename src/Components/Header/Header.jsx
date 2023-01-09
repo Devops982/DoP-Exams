@@ -88,7 +88,7 @@ const Header = () => {
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: 'top',
+        vertical: 'bottom',
         horizontal: 'right',
       }}
       id={menuId}
@@ -99,6 +99,8 @@ const Header = () => {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      aria-controls={ "basic-menu"}
+      
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
@@ -110,7 +112,7 @@ const Header = () => {
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
-        vertical: 'top',
+        vertical: 'bottom',
         horizontal: 'right',
       }}
       id={mobileMenuId}
@@ -122,7 +124,9 @@ const Header = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      {/* <MenuItem
+      
+      >
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -141,8 +145,12 @@ const Header = () => {
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      </MenuItem> */}
+      <MenuItem onClick={handleProfileMenuOpen}
+      MenuListProps={{
+        'aria-labelledby': 'basic-button',
+      }}
+      >
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -218,6 +226,9 @@ const Header = () => {
             aria-haspopup="true"
             onClick={handleProfileMenuOpen}
             color="inherit"
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
           >
             <AccountCircle />
           </IconButton>
