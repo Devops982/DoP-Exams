@@ -8,12 +8,14 @@ import ProfileAccount from '../Components/ProfileAccount'
 import SideDrawer from '../Components/SideDrawer'
 
 
+
 const Profile = () => {
+ 
   return (
     <>
     <Header/>
     <Container  maxWidth="sm md">
-    <Grid container spacing={2} sx={{height : 1}}>
+    <Grid container spacing={2} >
       <Grid item xs={12} md={3} >
         <SideDrawer/>
       </Grid>

@@ -25,6 +25,8 @@ import { Button,
   import { Link } from "react-router-dom";
 import { useState } from 'react';
 import Date from './Date';
+import CircleName from '../../API/CircleName';
+import Select from '@mui/material/Select';
 
 // Function used to check the length of the string
 const checkLength = ({ value, minLength, maxLength }) => {
@@ -80,6 +82,14 @@ export default function Signup() {
       message: "Enter Valid Employee Number of 8 digits",
     });
  
+  };
+  const [circleName, setcircleName] = useState('')
+  const [regionName, setregionName] = useState('')
+  const handleChange = (event) => {    
+    setregionName(event.target.value);
+  };
+  const handleChangeRegionName = (event) => {    
+    setcircleName(event.target.value);
   };
 
   return (
@@ -248,30 +258,40 @@ export default function Signup() {
               />
             </Grid>
               <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="off"
-                name="parentCircle"
-                id="parentCircle"
-                label="Parent Circle"
-                size="small"
-                helperText=""
-                required
-                fullWidth
-                
-              />
+              <FormControl fullWidth>
+              <InputLabel id="Parent-Circle-label" required>Parent Circle</InputLabel>
+              <Select 
+              labelId="Parent-Circle-label"
+              id="Parent-Cirlce-select"
+              value={circleName}
+              label="Parent-Cirlce-select"
+              onChange={handleChange}
+              
+              >
+                <MenuItem value={10}>Tamil Nadu</MenuItem>
+                <MenuItem value={20}>Kerala</MenuItem>
+                <MenuItem value={30}>Karnataka</MenuItem>
+              </Select>
+              </FormControl>
+              <CircleName/>
             </Grid>
               <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="off"
-                name="parentRegion"
-                id="parentRegion"
-                label="Parent Region"
-                size="small"
-                helperText=""
-                required
-                fullWidth
-                
-              />
+              <FormControl fullWidth>
+              <InputLabel id="Parent-Region-Name" required>Parent Region</InputLabel>
+              <Select 
+              labelId="Parent-Region-Name"
+              id="Parent-Region-Name"
+              value={regionName}
+              label="Parent Region"
+              onChange={handleChangeRegionName}
+              
+              >
+                <MenuItem value={1}>Chennai City</MenuItem>
+                <MenuItem value={2}>Southern</MenuItem>
+                <MenuItem value={3}>Central</MenuItem>
+              </Select>
+              </FormControl>
+              
             </Grid>
               <Grid item xs={12} sm={6}>
               <TextField
