@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material'
+import { Container } from '@mui/system'
 import React from 'react'
 import Footer from '../Components/Footer'
 import Header from '../Components/Header/Header'
@@ -11,14 +12,17 @@ const Profile = () => {
   return (
     <>
     <Header/>
-            <Grid container spacing={2}>
-            <Grid item xs={12} md={2}>
-                <SideDrawer/>
-            </Grid>
-            <Grid item xs={12} md={10}>
-                <ProfileAccount/>
-            </Grid>
-        </Grid>
+    <Container  maxWidth="sm md">
+    <Grid container spacing={2} sx={{height : 1}}>
+      <Grid item xs={12} md={3} >
+        <SideDrawer/>
+      </Grid>
+      <Grid item xs={12} md={9}>
+        <ProfileAccount/>
+      </Grid>
+    </Grid>
+    </Container>
+    
    
     <Footer/>    
     </>
