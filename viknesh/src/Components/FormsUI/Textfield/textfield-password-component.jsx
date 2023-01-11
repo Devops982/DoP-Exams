@@ -25,7 +25,7 @@ const TextfieldWrapperPassword = ({
     ...field,
     ...otherProps,
     fullWidth: true,
-    variant: 'filled',
+    variant: 'outlined',
  
     
     
@@ -39,16 +39,18 @@ const TextfieldWrapperPassword = ({
   return (
     <TextField {...configTextfield}
       type= { showPassword ? 'text' : 'password'}
-      endAdornment= {
-        < InputAdornment position ="end">
-    <IconButton
-      onClick={handleTogglePassword}
-    >
-      {showPassword ? <Visibility /> : <VisibilityOff />}
-    </IconButton>
-         
-        </InputAdornment >
-      }
+            InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton
+              onClick={handleTogglePassword}
+            >
+              {showPassword ? <Visibility /> : <VisibilityOff />}
+              
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
       
  
      />

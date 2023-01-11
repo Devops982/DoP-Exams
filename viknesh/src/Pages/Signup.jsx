@@ -143,15 +143,27 @@ const FORM_VALIDATION = Yup.object().shape({
     .min(3, 'Father Name should be minimum 3 characters')
     .max(50, 'Father Name should be maximum 50 characters'),
 
-  spouseName: Yup.string()
-    .required('*Mandatory Field')
-    .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-    .min(3, 'Spouse Name should be minimum 3 characters')
-    .max(50, 'Spouse Name should be maximum 50 characters'),
+ 
+  // conditionalTrigger: Yup.string().required(),
+  // conditionalAffected: Yup.string().when('conditionalTrigger', {
+  //   is: (val) => val == "something",
+  //   then: Yup.string().required('This field is required')
+  // }),
 
   maritalStatus: Yup.string()
     .required('*Mandatory Field'),
 
+  spouseName: Yup.string()
+    .when('maritalStatus',{
+      is: (val) => val === '1',
+      then: Yup.string()
+        .required('*Mandatory Field')
+        .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
+        .min(3, 'Spouse Name should be minimum 3 characters')
+        .max(50, 'Spouse Name should be maximum 50 characters'),
+}
+        ),
+   
   dateOfBirth: Yup.string()
     .required('*Mandatory Field'),
 
@@ -163,37 +175,6 @@ const FORM_VALIDATION = Yup.object().shape({
     .oneOf([true], 'The terms and conditions must be accepted.')
     .required('The terms and conditions must be accepted.'),
 });
-
-// const FORM_VALIDATION = Yup.object().shape({
-//   firstName: Yup.string()
-//     .required('Required'),
-//   lastName: Yup.string()
-//     .required('Required'),
-//   email: Yup.string()
-//     .email('Invalid email.')
-//     .required('Required'),
-//   phone: Yup.number()
-//     .integer()
-//     .typeError('Please enter a valid phone number')
-//     .required('Required'),
-//   addressLine1: Yup.string()
-//     .required('Required'),
-//   addressLine2: Yup.string(),
-//   city: Yup.string()
-//     .required('Required'),
-//   state: Yup.string()
-//     .required('Required'),
-//   country: Yup.string()
-//     .required('Required'),
-//   arrivealDate: Yup.date()
-//     .required('Required'),
-//   departureDate: Yup.date()
-//     .required('Required'),
-//   message: Yup.string(),
-//   termsOfService: Yup.boolean()
-//     .oneOf([true], 'The terms and conditions must be accepted.')
-//     .required('The terms and conditions must be accepted.'),
-// });
 
 
 const Signup = () => {
@@ -270,7 +251,7 @@ const Signup = () => {
                           </Grid>
 
                           <Grid item xs={6}>
-                            <Textfield
+                            <TextfieldPassword
                               name="employeeNameConfirmation"
                               label="Employee Name Confirmation"
                               
@@ -395,14 +376,16 @@ const Signup = () => {
                               ]}
                             />
                           </Grid>
+                            <Grid item xs={6}>
+                              <Textfield
+                                name="spouseName"
+                                label="Spouse Name"
+                                disabled  
+                              />
+                            </Grid>
+                         
 
-                          <Grid item xs={6}>
-                            <Textfield
-                              name="spouseName"
-                              label="Spouse Name"
-                              disabled
-                            />
-                          </Grid>
+                        
 
 
                           <Grid item xs={12}>
