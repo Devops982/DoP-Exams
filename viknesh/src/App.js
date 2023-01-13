@@ -7,7 +7,7 @@ import Header from './Components/HeaderFooter/header';
 import Footer from './Components/HeaderFooter/footer';
 import Signup from './Pages/Signup';
 import LoginAdmin from './Pages/LoginAdmin';
-
+import Part1Verification from './Pages/Part1Verification';
 
 
 function App() {
@@ -16,10 +16,8 @@ function App() {
       <Routes>
         <Route exact path='/' element={<><Header /><LoginAdmin /><Footer /> </>}></Route>
         <Route exact path='/Signup' element={<><Header /><Signup /><Footer /> </>}></Route>
-      {/* <Route exact path='/part1verification' element={<><Header />< Part1verification /> <Footer /></>}></Route> */}
-
-        {/* <Route exact path='/signup' element={<><Header />< Signup /> <Footer /></>}></Route>
-        <Route exact path='/profile' element={<><Header />< Profile /> <Footer /></>}></Route> */}
+        <Route exact path='/Part1Verification' element={<><Header /><Part1Verification /><Footer /> </>}></Route>
+    
 
       </Routes>
 

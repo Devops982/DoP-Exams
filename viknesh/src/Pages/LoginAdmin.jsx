@@ -110,13 +110,8 @@ const LoginAdmin = () => {
               alignItems: "center",
             }}
           >
-            {/* <Avatar
-              variant="circle"
-              sx={{ width: 120, height: 100, marginBottom :3 }}
-              alt="India Post"
-
-            /> */}
-            <Grid item xs={12} mt = {3} mb = {2}>
+          
+            <Grid item xs={12} mb = {2} mt={3}> 
               <Typography component="h1" variant="h6">
                 ADMINISTRATOR LOGIN
               </Typography>
