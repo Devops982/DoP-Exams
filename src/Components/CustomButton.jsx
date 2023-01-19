@@ -8,6 +8,7 @@ const CustomButton = ({
   heroBtn,
   guideBtn,
   getStartedBtn,
+ 
 }) => {
   const CustomButton = styled(Button)(({ theme }) => ({
     backgroundColor: backgroundColor,

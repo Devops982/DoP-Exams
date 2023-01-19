@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { Height } from "@mui/icons-material";
 import Footer from "./Footer";
+import { Link } from 'react-router-dom';
 
 
 const Hero = () => {
@@ -41,16 +42,17 @@ const Hero = () => {
         <CustomBox>
           <Box sx={{ flex: "1.80" }}>
             <Title variant="h1"  sx={{ fontSize: "42px" }}>
-             LDCE Exam Registration and Management Portal
+             LDCE Exam Application and Approval Portal
             </Title>
             <Typography
               variant="body2"
               sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}
             >
-             A Centralised Portal for PAN India DOP LDCE Examination Registrations
+             A Centralised Portal for PAN India DOP LDCE Examination Applications and Approvals.
             </Typography>
             <Grid container spacing={2}  rowSpacing={2} >
               <Grid xs={4}>
+                <Link to="/signup">
                 <CustomButton
                 backgroundColor="#0F1B4C"
                 color="#fff"
@@ -58,8 +60,11 @@ const Hero = () => {
                 heroBtn={true}
                 Height="10px"
               />
+                </Link>
+                
               </Grid>
               <Grid xs={4}>
+                <Link to="/Login">
                 <CustomButton
                 backgroundColor="#0F1B4C"
                 color="#fff"
@@ -67,15 +72,19 @@ const Hero = () => {
                 heroBtn={true}
                 Height="10px"
               />
+                </Link>
+                
               </Grid>
               <Grid xs={4}>
-                <CustomButton
+             <a target="_blank" href="http://localhost:3002/">
+             <CustomButton
                 backgroundColor="#0F1B4C"
                 color="#fff"
                 buttonText="DOP Controlling Authority Login"
                 heroBtn={true}
                 Height="10px"
               />
+             </a>
               </Grid>
             </Grid>
           </Box>
