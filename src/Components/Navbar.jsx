@@ -82,7 +82,8 @@ export const Navbar = () => {
     display: "flex",
     alignItems: "right",
     justifyContent: "center",
-    marginLeft :120,
+    marginLeft :250,
+    
     gap: theme.spacing(3),
     [theme.breakpoints.down("md")]: {
       display: "none",
@@ -103,9 +104,12 @@ export const Navbar = () => {
     alignItems: "center",
     justifyContent: "space-between",
     marginLeft :-50,
-    padding: theme.spacing(2),
+    marginRight :-80,
+   
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(6),
     [theme.breakpoints.down("md")]: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(5),
     },
   }));
 
@@ -137,7 +141,8 @@ export const Navbar = () => {
             {list("left")}
           </Drawer>
           <NavbarLogo src={logoImg} alt="logo" sx={{width:200,height:100}}/>
-          <Typography>Department of Posts,<br/>
+          <Typography>
+            Department of Posts,<br/>
           Ministry of Communications,<br/>
           Government of India</Typography>
         </Box>
@@ -159,7 +164,7 @@ export const Navbar = () => {
         }}
         maxWidth="100%"
       >
-        <Avatar variant="square"src={LionImage} sx={{width:100,height:160}}/>
+        <Avatar variant="square"src={LionImage} sx={{width:90,height:150, mr:-9}}/>
         {/* <NavLink variant="body2">Sign Up</NavLink>
         <CustomButton
           backgroundColor="#0F1B4C"

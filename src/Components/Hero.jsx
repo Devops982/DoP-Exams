@@ -40,7 +40,7 @@ const Hero = () => {
       <Container maxWidth="100%">
         <Navbar />
         <CustomBox>
-          <Box sx={{ flex: "1.80" }}>
+          <Box sx={{ flex: "1.9" }}>
             <Title variant="h1"  sx={{ fontSize: "42px" }}>
              LDCE Exam Application and Approval Portal
             </Title>
@@ -56,7 +56,7 @@ const Hero = () => {
                 <CustomButton
                 backgroundColor="#0F1B4C"
                 color="#fff"
-                buttonText="DOP Employee Registration"
+                buttonText="Employee Registration"
                 heroBtn={true}
                 Height="10px"
               />
@@ -68,7 +68,7 @@ const Hero = () => {
                 <CustomButton
                 backgroundColor="#0F1B4C"
                 color="#fff"
-                buttonText="DOP Employee Login"
+                buttonText="Employee Login"
                 heroBtn={true}
                 Height="10px"
               />
@@ -76,11 +76,11 @@ const Hero = () => {
                 
               </Grid>
               <Grid xs={4}>
-             <a target="_blank" href="http://localhost:3002/">
+             <a target="_blank" href="http://localhost:3001/">
              <CustomButton
                 backgroundColor="#0F1B4C"
                 color="#fff"
-                buttonText="DOP Controlling Authority Login"
+                buttonText="Admin Login"
                 heroBtn={true}
                 Height="10px"
               />
@@ -88,7 +88,7 @@ const Hero = () => {
               </Grid>
             </Grid>
           </Box>
-          <Box sx={{ flex: "0.8" }}>
+          <Box sx={{ flex: "0.7",marginLeft:"0px" }}>
             <img
               src={heroImg}
               alt="heroImg"
