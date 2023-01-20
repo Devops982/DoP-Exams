@@ -35,7 +35,7 @@ const SideDrawer = () => {
     }}
     >
       <List>
-            {['Part 1 Registration', 'Part 2 Registration', 'Update Transfer', 'Update Promotion'].map((text, index) => (
+            {['Part 1 Registration Verification', 'Part 2 Registration Verification', 'Transfer Approval', 'Promotion Approval'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -51,7 +51,7 @@ const SideDrawer = () => {
           </List>
           <Divider />
           <List>
-            {['Apply for Exam', 'View Applied Exams', 'View Profile'].map((text, index) => (
+            {['Manage Users', 'Reports Dashboard', 'View Profile'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>

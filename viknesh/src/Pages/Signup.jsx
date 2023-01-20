@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { ThemeProvider } from "@emotion/react";
@@ -12,7 +12,8 @@ import {
   Box,
   Avatar,
   createTheme,
- 
+  Radio,
+
 
 } from '@mui/material';
 
@@ -24,6 +25,9 @@ import Select from '../Components/FormsUI/Select/select-component';
 import DateTimePicker from '../Components/FormsUI/DataTimePicker/datepicker-component';
 import Checkbox from '../Components/FormsUI/Checkbox/checkbox-component';
 import Button from '../Components/FormsUI/Button/button-component';
+
+import Radiobutton from '../Components/FormsUI/Radiobutton/radiobutton-component';
+import Radiobutton_Textbox from '../Components/FormsUI/Radiobutton/radiobutton-textbox-component';
 
 // const useStyles = makeStyles((theme) => ({
 //   formWrapper: {
@@ -68,7 +72,7 @@ const INITIAL_FORM_STATE = {
   maritalStatus: "",
   dateOfBirth: "",
   gender: "",
-  termsOfService: ""
+  termsOfService: "",
 };
 
 
@@ -124,7 +128,7 @@ const FORM_VALIDATION = Yup.object().shape({
 
   cadre: Yup.string()
     .required('*Mandatory Field'),
-   
+
   officeStatus: Yup.string()
     .required('*Mandatory Field'),
 
@@ -143,7 +147,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .min(3, 'Father Name should be minimum 3 characters')
     .max(50, 'Father Name should be maximum 50 characters'),
 
- 
+
   // conditionalTrigger: Yup.string().required(),
   // conditionalAffected: Yup.string().when('conditionalTrigger', {
   //   is: (val) => val == "something",
@@ -154,21 +158,22 @@ const FORM_VALIDATION = Yup.object().shape({
     .required('*Mandatory Field'),
 
   spouseName: Yup.string()
-    .when('maritalStatus',{
-      is: (val) => val === '1',
+    .when('maritalStatus', {
+      is: (val) => val === '0',
       then: Yup.string()
         .required('*Mandatory Field')
         .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
         .min(3, 'Spouse Name should be minimum 3 characters')
         .max(50, 'Spouse Name should be maximum 50 characters'),
-}
-        ),
-   
+    }
+    ),
+
   dateOfBirth: Yup.string()
     .required('*Mandatory Field'),
 
-  gender: Yup.string()
-    .required('*Mandatory Field') ,
+
+  gender: Yup.boolean()
+  .required('A radio option is required'),
 
 
   termsOfService: Yup.boolean()
@@ -218,11 +223,11 @@ const Signup = () => {
                   <div>
 
                     <Formik
-                      initialValues={{...INITIAL_FORM_STATE}}
+                      initialValues={{ ...INITIAL_FORM_STATE }}
                       validationSchema={FORM_VALIDATION}
                       onSubmit={values => {
-                         console.log(values);
-                       }}
+                        console.log(values);
+                      }}
 
                     >
                       <Form>
@@ -240,8 +245,8 @@ const Signup = () => {
                             <TextfieldPassword
                               name="employeeNumberConfirmation"
                               label="Employee Number Confirmation"
-                                                         
-                              />
+
+                            />
                           </Grid>
                           <Grid item xs={6}>
                             <Textfield
@@ -254,7 +259,7 @@ const Signup = () => {
                             <TextfieldPassword
                               name="employeeNameConfirmation"
                               label="Employee Name Confirmation"
-                              
+
                             />
                           </Grid>
 
@@ -286,13 +291,13 @@ const Signup = () => {
                             />
                           </Grid>
 
-                          <Grid item xs={6}>
+                          {/* <Grid item xs={6}>
                             <Select
                               name="gender"
                               label="Gender"
                               options={["MALE", "FEMALE"]}
                             />
-                          </Grid>
+                          </Grid> */}
 
                           <Grid item xs={6}>
                             <Select
@@ -366,27 +371,49 @@ const Signup = () => {
                             />
                           </Grid>
 
-                          <Grid item xs={6}>
+                          {/* <Grid item xs={6}>
                             <Select
-                              name="maritalStatus"
-                              label="Marital Status"
-                              options={[
-                                "Unmarried",
-                                "Married"
+                            name="maritalStatus"
+                            label="Marital Status"
+                            options={[
+                              "Unmarried",
+                              "Married"
                               ]}
                             />
+                          </Grid> */}
+
+
+                          <Grid item xs={6}>
+                            <Radiobutton
+
+                              name="gender"
+                              label="Select Gender"
+                              options={
+                                [
+                                  "Male",
+                                  "Female",
+                                  "Others"
+                                ]}
+                            />
                           </Grid>
-                            <Grid item xs={6}>
-                              <Textfield
-                                name="spouseName"
-                                label="Spouse Name"
-                                // disabled  
-                              />
-                            </Grid>
-                         
 
-                        
 
+
+                          <Grid item xs={6}>
+                            <Radiobutton_Textbox
+
+                              name="maritalStatus"
+                              label="Marital Status"
+                              options={
+                                [
+                                  "Married",
+                                  "Unmarried"
+                                ]}
+                              textfieldName="spouseName"
+                              textfieldLabel="Spouse Name"
+
+                            />
+                         </Grid>
 
                           <Grid item xs={12}>
                             <Checkbox

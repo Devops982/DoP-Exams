@@ -39,7 +39,7 @@ const Part1Verification = () => {
                     </Grid>
                     
                    <Grid item xs={12} md={9}>
-                        <Part1VerificationComponent />
+                        {/* <Part1VerificationComponent /> */}
                     </Grid> 
                 </Grid>
             </Container>
