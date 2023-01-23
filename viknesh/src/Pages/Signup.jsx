@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { ThemeProvider } from "@emotion/react";
@@ -13,9 +13,7 @@ import {
   Avatar,
   createTheme,
   Radio,
-
-
-} from '@mui/material';
+  } from '@mui/material';
 
 
 
@@ -29,30 +27,8 @@ import Button from '../Components/FormsUI/Button/button-component';
 import Radiobutton from '../Components/FormsUI/Radiobutton/radiobutton-component';
 import Radiobutton_Textbox from '../Components/FormsUI/Radiobutton/radiobutton-textbox-component';
 
-// const useStyles = makeStyles((theme) => ({
-//   formWrapper: {
-//     marginTop: theme.spacing(5),
-//     marginBottom: theme.spacing(8),
-//   },
-// }));
-
 const theme = createTheme();
 
-// const INITIAL_FORM_STATE = {
-//   firstName: '',
-//   lastName: '',
-//   email: '',
-//   phone: '',
-//   addressLine1: '',
-//   addressLine2: '',
-//   city: '',
-//   state: '',
-//   country: '',
-//   arrivealDate: '',
-//   departureDate: '',
-//   message: '',
-//   termsOfService: false
-// };
 const INITIAL_FORM_STATE = {
   employeeNumber: "",
   employeeNumberConfirmation: "",
@@ -76,19 +52,18 @@ const INITIAL_FORM_STATE = {
 };
 
 
-
 const FORM_VALIDATION = Yup.object().shape({
-  employeeNumber: Yup.string()
-    .required('*Mandatory Field')
-    .matches(/^[0-9]+$/, "Enter valid Employee Number")
-    .min(8, 'Employee Number should be exactly 8 digits')
-    .max(8, 'Employee Number should be exactly 8 digits'),
+   employeeNumber: Yup.string()
+     .required('*Mandatory Field')
+     .matches(/^[0-9]+$/, "Enter valid Employee Number")
+     .min(8, 'Employee Number should be exactly 8 digits')
+     .max(8, 'Employee Number should be exactly 8 digits'),
 
-  employeeNumberConfirmation: Yup.string()
-    .required('*Mandatory Field')
-    .oneOf([Yup.ref('employeeNumber'), null], "Employee Number Mismatch!")
-    .min(8, 'Employee Number should be exactly 8 digits')
-    .max(8, 'Employee Number should be exactly 8 digits'),
+   employeeNumberConfirmation: Yup.string()
+     .required('*Mandatory Field')
+     .oneOf([Yup.ref('employeeNumber'), null], "Employee Number Mismatch!")
+     .min(8, 'Employee Number should be exactly 8 digits')
+     .max(8, 'Employee Number should be exactly 8 digits'),
 
 
   employeeName: Yup.string()
@@ -148,12 +123,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .max(50, 'Father Name should be maximum 50 characters'),
 
 
-  // conditionalTrigger: Yup.string().required(),
-  // conditionalAffected: Yup.string().when('conditionalTrigger', {
-  //   is: (val) => val == "something",
-  //   then: Yup.string().required('This field is required')
-  // }),
-
+ 
   maritalStatus: Yup.string()
     .required('*Mandatory Field'),
 
@@ -171,26 +141,21 @@ const FORM_VALIDATION = Yup.object().shape({
   dateOfBirth: Yup.string()
     .required('*Mandatory Field'),
 
-
-  gender: Yup.boolean()
-  .required('A radio option is required'),
-
-
   termsOfService: Yup.boolean()
     .oneOf([true], 'The terms and conditions must be accepted.')
     .required('The terms and conditions must be accepted.'),
-});
+ });
 
 
 const Signup = () => {
-  //const classes = useStyles();
+  
 
   return (
 
 
     <ThemeProvider theme={theme}>
       <Container component={"main"} maxWidth="xl">
-        {/* <CssBaseline /> */}
+       
         <Paper
           elevation={5}
           sx={{
@@ -219,14 +184,13 @@ const Signup = () => {
             <Grid container>
               <Grid item xs={12}>
                 <Container maxWidth="xl">
-                  {/* <div className={classes.formWrapper}> */}
-                  <div>
+                 <div>
 
                     <Formik
                       initialValues={{ ...INITIAL_FORM_STATE }}
                       validationSchema={FORM_VALIDATION}
                       onSubmit={values => {
-                        console.log(values);
+                        console.log (values);
                       }}
 
                     >
@@ -238,6 +202,7 @@ const Signup = () => {
                             <Textfield
                               name="employeeNumber"
                               label="Employee Number"
+                            
                             />
                           </Grid>
 
@@ -291,13 +256,7 @@ const Signup = () => {
                             />
                           </Grid>
 
-                          {/* <Grid item xs={6}>
-                            <Select
-                              name="gender"
-                              label="Gender"
-                              options={["MALE", "FEMALE"]}
-                            />
-                          </Grid> */}
+                       
 
                           <Grid item xs={6}>
                             <Select
@@ -371,23 +330,14 @@ const Signup = () => {
                             />
                           </Grid>
 
-                          {/* <Grid item xs={6}>
-                            <Select
-                            name="maritalStatus"
-                            label="Marital Status"
-                            options={[
-                              "Unmarried",
-                              "Married"
-                              ]}
-                            />
-                          </Grid> */}
-
+                          
 
                           <Grid item xs={6}>
                             <Radiobutton
 
                               name="gender"
                               label="Select Gender"
+                              row
                               options={
                                 [
                                   "Male",
@@ -424,7 +374,7 @@ const Signup = () => {
                           </Grid>
                           <Grid container justifyContent="center">
                             <Grid item xs={6} justify='center'>
-                              <Button>
+                              <Button type = 'submit'>
                                 REGISTER
                               </Button>
                             </Grid>

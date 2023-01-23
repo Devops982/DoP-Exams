@@ -39,10 +39,10 @@ const RadiotextWrapper = ({
         onChange: handleChange
     };
 
-    if (meta && meta.touched && meta.error) {
-        configRadio.error = true;
-        configRadio.helperText = meta.error;
-    }
+    // if (meta && meta.touched && meta.error) {
+    //     configRadio.error = true;
+    //     configRadio.helpertext = meta.error;
+    // }
 
     return (
 

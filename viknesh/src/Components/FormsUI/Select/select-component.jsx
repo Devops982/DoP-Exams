@@ -26,7 +26,7 @@ const SelectWrapper = ({
 
   if (meta && meta.touched && meta.error) {
     configSelect.error = true;
-    configSelect.helperText = meta.error;
+    configSelect.helpertext = meta.error;
   }
 
   return (

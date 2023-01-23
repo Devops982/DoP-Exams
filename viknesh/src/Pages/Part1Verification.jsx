@@ -25,7 +25,6 @@ import DateTimePicker from '../Components/FormsUI/DataTimePicker/datepicker-comp
 import Checkbox from '../Components/FormsUI/Checkbox/checkbox-component';
 import Button from '../Components/FormsUI/Button/button-component';
 import Sidedrawer from '../Components/FormsUI/Sidedrawer/Sidedrawer-component';
-import Part1VerificationComponent from '../Components/Verification/Part1Verification-component';
 
 const Part1Verification = () => {
 

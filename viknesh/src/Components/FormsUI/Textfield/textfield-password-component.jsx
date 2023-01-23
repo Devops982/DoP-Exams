@@ -33,7 +33,7 @@ const TextfieldWrapperPassword = ({
 
   if (mata && mata.touched && mata.error) {
     configTextfield.error = true;
-    configTextfield.helperText = mata.error;
+    configTextfield.helpertext = mata.error;
   }
 
   return (
