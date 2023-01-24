@@ -7,7 +7,16 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Textfield from '../Textfield/textfield-component';
 
+import {
+    Container,
+    Grid,
+    Typography,
+    Paper,
+    Box,
+    Avatar,
+    createTheme,
 
+} from '@mui/material';
 
 const RadiotextWrapper = ({
     name,
@@ -15,6 +24,7 @@ const RadiotextWrapper = ({
     options,
     textfieldName,
     textfieldLabel,
+    textfieldDefaultValue,
     ...otherProps
 }) => {
     const { setFieldValue } = useFormikContext();
@@ -25,11 +35,9 @@ const RadiotextWrapper = ({
         const { value } = evt.target;
         setFieldValue(name, value);
         // Assigning the state for enabling/ disabling the text field based on radio button
-        if (value === "0") 
-            { setTextfieldDisabled(false);}
+        if (value === "0") { setTextfieldDisabled(false); }
 
-        if (value != "0") 
-            { setTextfieldDisabled(true);}
+        if (value != "0") { setTextfieldDisabled(true); }
 
     };
 
@@ -47,37 +55,57 @@ const RadiotextWrapper = ({
     return (
 
         <div>
-            <FormControl>
-                <FormLabel >{label}</FormLabel>
-                <RadioGroup
-                    row
-                    {...configRadio}
-                >
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "left",
+                }}
+            >
 
-                    {Object.keys(options).map((item, pos) => {
-                        return (
-                            <FormControlLabel
-                                key={pos}
-                                value={item}
-                                control={<Radio />}
-                                label={options[item]} >
-                            </FormControlLabel>
+                <Container maxWidth="xl">
+                    <Grid container spacing={2} >
+                        <Grid item xs={12} md={5} >
+                            <FormControl>
+                                <FormLabel >{label}</FormLabel>
 
-                        )
-                    })
-                    }
+                                <RadioGroup
+
+                                    {...configRadio}
+                                >
+
+                                    {Object.keys(options).map((item, pos) => {
+                                        return (
+                                            <FormControlLabel
+                                                key={pos}
+                                                value={item}
+                                                control={<Radio />}
+                                                label={options[item]} >
+                                            </FormControlLabel>
+
+                                        )
+                                    })
+                                    }
 
 
-                </RadioGroup>
+                                </RadioGroup>
 
-            </FormControl>
 
-            <Textfield
-                name={textfieldName}
-                label={textfieldLabel}
-                disabled={textfieldDisabled}
+                            </FormControl>
+                        </Grid>
 
-            />
+                        <Grid item xs={12} md={7} >
+                            <Textfield
+                                name={textfieldName}
+                                label={textfieldLabel}
+                                disabled={textfieldDisabled}
+
+
+                            />
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Box>
         </div>
 
     );

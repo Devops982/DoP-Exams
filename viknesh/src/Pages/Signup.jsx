@@ -48,6 +48,14 @@ const INITIAL_FORM_STATE = {
   maritalStatus: "",
   dateOfBirth: "",
   gender: "",
+  category:"", 
+  presentDesignation:"",
+  dccs:"",
+  dateOfJoiningThePresentCadre:"",
+  personWithDisability:"",
+  disabilityDetails:"",
+  workingInAPS:"",
+  presentRole:"",
   termsOfService: "",
 };
 
@@ -348,12 +356,12 @@ const Signup = () => {
                           </Grid>
 
 
-
                           <Grid item xs={6}>
                             <Radiobutton_Textbox
 
                               name="maritalStatus"
                               label="Marital Status"
+                              row
                               options={
                                 [
                                   "Married",
@@ -361,9 +369,97 @@ const Signup = () => {
                                 ]}
                               textfieldName="spouseName"
                               textfieldLabel="Spouse Name"
+                             />
+                         </Grid>
+
+                          <Grid item xs={6}>
+                            <Radiobutton
+                              name="category"
+                              label="Select category"
+                              row
+                              options={
+                                [
+                                  "UR",
+                                  "OBC",
+                                  "SC",
+                                  "ST",
+                                  "EWS"
+                                ]}
+                            />
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <Textfield
+                              name="presentDesignation"
+                              label="Present Designation"
+                            />
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <Select
+                              name="presentRole"
+                              label="Present Role"
+                              options={[
+                                "1.Cashier",
+                                "2.Treasurer",
+                                "3.Delivery Clerk",
+                                "4.Counter Clerk"
+
+                              ]}
+                            />
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <DateTimePicker
+                              name="dccs"
+                              label="DCCS (dd/mm/yyyy)"
+                            />
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <DateTimePicker
+                              name="dateOfJoiningThePresentCadre"
+                              label="Date Of Joining The Present Cadre (dd/mm/yyyy)"
+                            />
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <Radiobutton_Textbox
+
+                              name="personWithDisability"
+                              label="Person With Disability"
+                              row
+                              options={
+                                [
+                                  "Yes",
+                                  "No"
+                                ]}
+                              textfieldName="disabilityDetails"
+                              textfieldLabel="Disability Details"
 
                             />
-                         </Grid>
+                          </Grid>
+
+                          <Grid item xs={6}>
+                            <Radiobutton
+                              name="workingInAPS"
+                              label="Working In APS"
+                              row
+                              options={
+                                [
+                                  "Yes",
+                                  "No"
+                                ]}
+                            />
+                          </Grid>
+
+                          {/* category:"",
+                          presentDesignation:"",
+                          dccs:"",
+                          dateOfJoiningThePresentCadre:"",
+                          personWithDisability:"",
+                          workingInAPS:"",
+                          presentRole:"", */}
 
                           <Grid item xs={12}>
                             <Checkbox

@@ -24,7 +24,7 @@ function Header() {
   
   
   <>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <img
             src={Logo}

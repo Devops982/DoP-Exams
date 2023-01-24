@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Paper } from '@mui/material';
+import { BrowserRouter as Router, Route, Routes, useNavigate, Link } from "react-router-dom";
 
 
 
@@ -32,10 +33,11 @@ const SideDrawer = () => {
       padding: "2rem",
       marginTop: "1rem",
       border: "1px solid #2673E2",
+      position :'fixed'
     }}
     >
       <List>
-            {['Part 1 Registration Verification', 'Part 2 Registration Verification', 'Transfer Approval', 'Promotion Approval'].map((text, index) => (
+          {[' Profile Verification', 'Transfer Verification', 'Promotion Verification'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -63,6 +65,9 @@ const SideDrawer = () => {
               
             ))}
           </List>
+
+
+          
     </Paper>
           
           

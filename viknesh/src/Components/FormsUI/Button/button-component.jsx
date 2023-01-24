@@ -4,6 +4,7 @@ import { useFormikContext } from 'formik';
 
 const ButtonWrapper = ({
   children,
+  color,
   ...otherProps
 }) => {
   const { submitForm } = useFormikContext();
@@ -14,14 +15,14 @@ const ButtonWrapper = ({
 
   const configButton = {
     variant: 'contained',
-    color: 'primary',
     fullWidth: true,
     onClick: handleSubmit
   }
 
   return (
     <Button
-      {...configButton}
+      {...configButton
+       }
     >
       {children}
     </Button>
