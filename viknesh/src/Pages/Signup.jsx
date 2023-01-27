@@ -2,8 +2,6 @@ import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { ThemeProvider } from "@emotion/react";
-
-
 import {
     Container,
     Grid,
@@ -14,16 +12,12 @@ import {
     createTheme,
     Radio,
 } from '@mui/material';
-
-
-
 import Textfield from '../Components/FormsUI/Textfield/textfield-component';
 import TextfieldPassword from '../Components/FormsUI/Textfield/textfield-password-component';
 import Select from '../Components/FormsUI/Select/select-component';
 import DateTimePicker from '../Components/FormsUI/DataTimePicker/datepicker-component';
 import Checkbox from '../Components/FormsUI/Checkbox/checkbox-component';
 import Button from '../Components/FormsUI/Button/button-component';
-
 import Radiobutton from '../Components/FormsUI/Radiobutton/radiobutton-component';
 import RadiobuttonTextbox from '../Components/FormsUI/Radiobutton/radiobutton-textbox-component';
 
@@ -56,7 +50,7 @@ const INITIAL_FORM_STATE = {
     disabilityDetails: "",
     workingInAPS: "",
     presentRole: "",
-    termsOfService: false,
+    termsOfService: "",
 };
 
 
@@ -130,12 +124,9 @@ const FORM_VALIDATION = Yup.object().shape({
         .min(3, 'Father Name should be minimum 3 characters')
         .max(50, 'Father Name should be maximum 50 characters'),
 
-
-
-      maritalStatus: Yup.string()
+    maritalStatus: Yup.string()
        .required('*Mandatory Field'),
        
-
     spouseName: Yup.string()
         .when('maritalStatus', {
             is: (val) => val === "Married",
@@ -178,26 +169,22 @@ const FORM_VALIDATION = Yup.object().shape({
     workingInAPS: Yup.string()
         .required('*Mandatory Field'),
 
-
     dccs: Yup.string()
         .required('*Mandatory Field'),
-        
         
     dateOfJoiningThePresentCadre: Yup.string()
         .required('*Mandatory Field'),
 
-    termsOfService: Yup.string()
-       .oneOf([true], 'The terms and conditions must be accepted.')
+    termsOfService: Yup.boolean()
+       .oneOf([true], 'The terms and conditions must be accepted.1')
        .required('The terms and conditions must be accepted.'),
 });
 
 
-const Signup_24012023 = () => {
+const Signup = () => {
 
 
     return (
-
-
         <ThemeProvider theme={theme}>
             <Container component={"main"} maxWidth="xl">
 
@@ -512,14 +499,6 @@ const Signup_24012023 = () => {
                                                         />
                                                     </Grid>
 
-                                                    {/* category:"",
-                          presentDesignation:"",
-                          dccs:"",
-                          dateOfJoiningThePresentCadre:"",
-                          personWithDisability:"",
-                          workingInAPS:"",
-                          presentRole:"", */}
-
                                                     <Grid item xs={12}>
                                                         <Checkbox
                                                             name="termsOfService"
@@ -554,4 +533,4 @@ const Signup_24012023 = () => {
     );
 };
 
-export default Signup_24012023;
+export default Signup;

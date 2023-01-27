@@ -34,7 +34,7 @@ const INITIAL_FORM_STATE = {
     employeeNumberVerificationRemarks: "",
     employeeName: "",
     employeeNameVerification: "",
-    employeeNameRemarks: "",
+    employeeNameVerificationRemarks: "",
     cadre: "",
     cadreVerification: "",
     cadreVerificationRemarks: "",
@@ -94,81 +94,279 @@ const INITIAL_FORM_STATE = {
 };
 
 const FORM_VALIDATION = Yup.object().shape({
-    employeeNumber: Yup.string()
-        .required('*Mandatory Field')
-        .matches(/^[0-9]+$/, "Enter valid Employee Number")
-        .min(8, 'Employee Number should be exactly 8 digits')
-        .max(8, 'Employee Number should be exactly 8 digits'),
 
-    employeeNumberConfirmation: Yup.string()
-        .required('*Mandatory Field')
-        .oneOf([Yup.ref('employeeNumber'), null], "Employee Number Mismatch!")
-        .min(8, 'Employee Number should be exactly 8 digits')
-        .max(8, 'Employee Number should be exactly 8 digits'),
-
-
-    employeeName: Yup.string()
-        .required('*Mandatory Field')
-        .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-        .min(3, 'Employee Name should be minimum 3 characters')
-        .max(50, 'Employee Name should be maximum 50 characters'),
-
-    employeeNameConfirmation: Yup.string()
-        .required('*Mandatory Field')
-        .oneOf([Yup.ref('employeeName'), null], "Employee Name Mismatch!")
-        .min(3, 'Employee Name should be minimum 3 characters')
-        .max(50, 'Employee Name should be maximum 50 characters'),
-
- 
-    email: Yup.string()
-        .email('Invalid email.')
+    employeeNumberVerification: Yup.string()
         .required('*Mandatory Field'),
 
-    otpEmail: Yup.string()
-        .required('*Mandatory Field')
-        .matches(/^[0-9]+$/, "Enter valid Email OTP")
-        .min(6, 'Email OTP should be exactly 6 digits')
-        .max(6, 'Email OTP should be exactly 6 digits'),
-
-    cadre: Yup.string()
-        .required('*Mandatory Field'),
-
-    officeStatus: Yup.string()
-        .required('*Mandatory Field'),
-
-    parentCircle: Yup.string()
-        .required('*Mandatory Field'),
-
-    parentRegion: Yup.string()
-        .required('*Mandatory Field'),
-
-    parentDivision: Yup.string()
-        .required('*Mandatory Field'),
-
-    fatherName: Yup.string()
-        .required('*Mandatory Field')
-        .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-        .min(3, 'Father Name should be minimum 3 characters')
-        .max(50, 'Father Name should be maximum 50 characters'),
-
-
-
-    maritalStatus: Yup.string()
-        .required('*Mandatory Field'),
-
-    spouseName: Yup.string()
-        .when('maritalStatus', {
-            is: (val) => val === '0',
+    employeeNumberVerificationRemarks: Yup.string()
+        .when('employeeNumberVerification', {
+            is: (val) => val === "Incorrect",
             then: Yup.string()
                 .required('*Mandatory Field')
-                .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-                .min(3, 'Spouse Name should be minimum 3 characters')
-                .max(50, 'Spouse Name should be maximum 50 characters'),
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
         }
         ),
 
-    dateOfBirth: Yup.string()
+   
+   employeeNameVerification: Yup.string()
         .required('*Mandatory Field'),
+
+    employeeNameVerificationRemarks: Yup.string()
+        .when('employeeNameVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+    
+   
+    cadreVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    cadreVerificationRemarks: Yup.string()
+        .when('cadreVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+
+    officeStatusVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    officeStatusVerificationRemarks: Yup.string()
+        .when('officeStatusVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+
+    parentCircleVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    parentCircleVerificationRemarks: Yup.string()
+        .when('parentCircleVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+  
+
+    parentRegionVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    parentRegionVerificationRemarks: Yup.string()
+        .when('parentRegionVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+ 
+    parentDivisionVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    parentDivisionVerificationRemarks: Yup.string()
+        .when('parentDivisionVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+    fatherNameVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    fatherNameVerificationRemarks: Yup.string()
+        .when('fatherNameVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+  
+    spouseNameVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    spouseNameVerificationRemarks: Yup.string()
+        .when('spouseNameVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+    
+    
+    maritalStatusVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    maritalStatusVerificationRemarks: Yup.string()
+        .when('maritalStatusVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+    
+    dateOfBirthVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    dateOfBirthVerificationRemarks: Yup.string()
+        .when('dateOfBirthVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+   
+
+    genderVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    genderVerificationRemarks: Yup.string()
+        .when('genderVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+ 
+    categoryVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    categoryVerificationRemarks: Yup.string()
+        .when('categoryVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+   
+    presentDesignationVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    presentDesignationVerificationRemarks: Yup.string()
+        .when('presentDesignationVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+ 
+    dccsVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    dccsVerificationRemarks: Yup.string()
+        .when('dccsVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+    dateOfJoiningThePresentCadreVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    dateOfJoiningThePresentCadreVerificationRemarks: Yup.string()
+        .when('dateOfJoiningThePresentCadreVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+ 
+    personWithDisabilityVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    personWithDisabilityVerificationRemarks: Yup.string()
+        .when('personWithDisabilityVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+ 
+    disabilityDetailsVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    disabilityDetailsVerificationRemarks: Yup.string()
+        .when('disabilityDetailsVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+
+
+    workingInAPSVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    workingInAPSVerificationRemarks: Yup.string()
+        .when('workingInAPSVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+
+
+    presentRoleVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    presentRoleVerificationRemarks: Yup.string()
+        .when('presentRoleVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
 
 
 });
@@ -214,9 +412,20 @@ const ProfileVerification = () => {
                                         <Formik
                                             initialValues={{ ...INITIAL_FORM_STATE }}
                                             validationSchema={FORM_VALIDATION}
-                                            onSubmit={values => {
-                                                console.log(values);
-                                            }}
+                                            // onSubmit={values => {
+                                            //     console.log(values);
+                                            // }}
+
+                                        onSubmit=
+                                        {(values) => {
+                                            const fileData = JSON.stringify(values);
+                                            const blob = new Blob([fileData], { type: "text/plain" });
+                                            const url = URL.createObjectURL(blob);
+                                            const link = document.createElement('a');
+                                            link.download = `${values.employeeNumber}-${values.employeeName}-ProfileVerification.json`;
+                                            link.href = url;
+                                            link.click();
+                                        }}
 
                                         >
                                             <Form>
@@ -238,11 +447,13 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
+                                                                    
                                                                 ]}
                                                             textfieldName="employeeNumberVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                            textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -260,11 +471,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="employeeNameVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -288,11 +500,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="officeStatusVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -312,11 +525,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="cadreVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -337,11 +551,13 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
-                                                                ]}
+                                                                    "Correct",
+                                                                    "Incorrect"
+                                                                ]
+                                                            }
                                                             textfieldName="parentCircleVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -362,11 +578,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="parentRegionVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -387,11 +604,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="parentDivisionVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -411,11 +629,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="dateOfBirthVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -435,11 +654,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="fatherNameVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -460,11 +680,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="genderVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -484,11 +705,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="maritalStatusVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -509,11 +731,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="spouseNameVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -533,11 +756,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="categoryVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -557,11 +781,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="presentDesignationVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -582,11 +807,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="presentRoleVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -606,11 +832,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="dccsVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -629,11 +856,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="dateOfJoiningThePresentCadreVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
                                           
@@ -653,11 +881,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="personWithDisabilityVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -677,11 +906,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="disabilityDetailsVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -702,11 +932,12 @@ const ProfileVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="workingInAPSVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -714,16 +945,16 @@ const ProfileVerification = () => {
                                            
                                                     <Grid container justifyContent="center" spacing={3} marginTop = {2}>
                                                         <Grid item xs={4} >
-                                                            <Button type='submit' >
+                                                            <Button type= 'submit' >
                                                                                                                             
                                                                 Verified Successfully
                                                             </Button>
                                                         </Grid>
-                                                        <Grid item xs={4} >
+                                                        {/* <Grid item xs={4} >
                                                             <Button type='submit'>
                                                                 Allow Resubmission
                                                             </Button>
-                                                        </Grid>
+                                                        </Grid> */}
                                                     </Grid>
 
 
@@ -742,7 +973,7 @@ const ProfileVerification = () => {
                     </Box>
                 </Paper>
 
-            </Container >
+            </Container>
     
 
     );

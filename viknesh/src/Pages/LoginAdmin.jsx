@@ -31,21 +31,7 @@ import Button from '../Components/FormsUI/Button/button-component';
 
 const theme = createTheme();
 
-// const INITIAL_FORM_STATE = {
-//   firstName: '',
-//   lastName: '',
-//   email: '',
-//   phone: '',
-//   addressLine1: '',
-//   addressLine2: '',
-//   city: '',
-//   state: '',
-//   country: '',
-//   arrivealDate: '',
-//   departureDate: '',
-//   message: '',
-//   termsOfService: false
-// };
+
 const INITIAL_FORM_STATE = {
  
   mobileNumber: "",
