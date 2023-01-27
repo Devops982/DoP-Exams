@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { useField, useFormikContext } from 'formik';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import { useField, useFormikContext, ErrorMessage } from 'formik';
 import Textfield from '../Textfield/textfield-component';
+
+import {
+    Radio,
+    RadioGroup,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    FormHelperText
+} from "@mui/material";
 
 import {
     Container,
@@ -15,6 +19,7 @@ import {
     Box,
     Avatar,
     createTheme,
+    TextareaAutosize,
 
 } from '@mui/material';
 
@@ -24,7 +29,7 @@ const RadiotextWrapper = ({
     options,
     textfieldName,
     textfieldLabel,
-    textfieldDefaultValue,
+    textfieldCondition,
     ...otherProps
 }) => {
     const { setFieldValue } = useFormikContext();
@@ -34,11 +39,9 @@ const RadiotextWrapper = ({
     const handleChange = evt => {
         const { value } = evt.target;
         setFieldValue(name, value);
+
         // Assigning the state for enabling/ disabling the text field based on radio button
-        if (value === "0") { setTextfieldDisabled(false); }
-
-        if (value != "0") { setTextfieldDisabled(true); }
-
+        { (textfieldCondition == value) ? setTextfieldDisabled(false) : setTextfieldDisabled(true) }
     };
 
     const configRadio = {
@@ -47,11 +50,12 @@ const RadiotextWrapper = ({
         onChange: handleChange
     };
 
-    // if (meta && meta.touched && meta.error) {
-    //     configRadio.error = true;
-    //     configRadio.helpertext = meta.error;
-    // }
-
+    const configFormControl = {};
+    if (meta && meta.touched && meta.error) {
+        configFormControl.error = true;
+       
+    }
+   
     return (
 
         <div>
@@ -66,7 +70,7 @@ const RadiotextWrapper = ({
                 <Container maxWidth="xl">
                     <Grid container spacing={2} >
                         <Grid item xs={12} md={5} >
-                            <FormControl>
+                            <FormControl {...configFormControl}>
                                 <FormLabel >{label}</FormLabel>
 
                                 <RadioGroup
@@ -78,7 +82,7 @@ const RadiotextWrapper = ({
                                         return (
                                             <FormControlLabel
                                                 key={pos}
-                                                value={item}
+                                                value={options[item]}
                                                 control={<Radio />}
                                                 label={options[item]} >
                                             </FormControlLabel>
@@ -89,7 +93,9 @@ const RadiotextWrapper = ({
 
 
                                 </RadioGroup>
-
+                                <FormHelperText>
+                                    <ErrorMessage name={name} />
+                                </FormHelperText>
 
                             </FormControl>
                         </Grid>
@@ -99,6 +105,8 @@ const RadiotextWrapper = ({
                                 name={textfieldName}
                                 label={textfieldLabel}
                                 disabled={textfieldDisabled}
+                                multiline
+                                maxRows={10}
 
 
                             />

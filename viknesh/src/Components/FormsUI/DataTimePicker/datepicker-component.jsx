@@ -21,7 +21,7 @@ const DateTimePicker = ({
 
   if(meta && meta.touched && meta.error) {
     configDateTimePicker.error = true;
-    configDateTimePicker.helpertext = meta.error;
+    configDateTimePicker.helperText = meta.error;
   }
 
   return (

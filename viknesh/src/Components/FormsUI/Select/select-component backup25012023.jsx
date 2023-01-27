@@ -13,7 +13,6 @@ const SelectWrapper = ({
   const handleChange = evt => {
     const { value } = evt.target;
     setFieldValue(name, value);
-    console.log("value:  ", evt.target.value);
   };
 
   const configSelect = {
@@ -27,18 +26,16 @@ const SelectWrapper = ({
 
   if (meta && meta.touched && meta.error) {
     configSelect.error = true;
-    configSelect.helperText = meta.error;
+    configSelect.helpertext = meta.error;
   }
 
   return (
     <TextField {...configSelect}>
       {Object.keys(options).map((item, pos) => {
-        {/* console.log("item    pos:  ", item, options[pos]) */}
         return (
-          <MenuItem key={pos} value={options[item]}>
+          <MenuItem key={pos} value={item}>
             {options[item]}
           </MenuItem>
-          
         )
       })}
     </TextField>

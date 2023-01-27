@@ -7,7 +7,7 @@ const TextfieldWrapper = ({
   name,
   ...otherProps
 }) => {
-  const [field, mata] = useField(name);
+  const [field, meta] = useField(name);
 
   const configTextfield = {
     ...field,
@@ -17,9 +17,9 @@ const TextfieldWrapper = ({
     defaultValue:""
   };
 
-  if (mata && mata.touched && mata.error) {
+  if (meta && meta.touched && meta.error) {
     configTextfield.error = true;
-    configTextfield.helpertext = mata.error;
+    configTextfield.helperText = meta.error;
   }
 
   return (

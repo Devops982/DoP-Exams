@@ -1,10 +1,14 @@
 import React from 'react';
-import { useField, useFormikContext } from 'formik';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import { useField, useFormikContext, ErrorMessage } from 'formik';
+
+import {
+  Radio,
+  RadioGroup,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  FormHelperText
+} from "@mui/material";
 
 const RadioWrapper = ({
   name,
@@ -26,29 +30,33 @@ const RadioWrapper = ({
     onChange: handleChange
   };
 
-  // if (meta && meta.touched && meta.error) {
-  //   configRadio.error = true;
-  //   configRadio.helpertext = meta.error;
-  // }
+  const configFormControl = {};
+  if (meta && meta.touched && meta.error) {
+    configFormControl.error = true;
+
+  }
 
   return (
-      <FormControl>
+    <FormControl {...configFormControl}>
       <FormLabel >{label}</FormLabel>
       <RadioGroup  {...configRadio} >
-         {Object.keys(options).map((item, pos) => {
-         return (
-           <FormControlLabel 
-           key = {pos}
-           value={item} 
-           control={<Radio />}
-           label={options[item]} >
-           
-           </FormControlLabel>
-        )
-       })}
-   
+        {Object.keys(options).map((item, pos) => {
+          return (
+            <FormControlLabel
+              key={pos}
+              value={options[item]}
+              control={<Radio />}
+              label={options[item]} >
+
+            </FormControlLabel>
+          )
+        })}
+
       </RadioGroup>
-    </FormControl> 
+      <FormHelperText>
+        <ErrorMessage name={name} />
+      </FormHelperText>
+    </FormControl>
   );
 };
 

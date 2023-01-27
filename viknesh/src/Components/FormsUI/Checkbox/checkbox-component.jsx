@@ -4,9 +4,10 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormLabel
+  FormLabel, 
+  FormHelperText
 } from "@mui/material";
-import { useField, useFormikContext } from 'formik';
+import { useField, useFormikContext, ErrorMessage } from 'formik';
 
 const CheckboxWrapper = ({
   name,
@@ -30,7 +31,7 @@ const CheckboxWrapper = ({
   const configFormControl = {};
   if (meta && meta.touched && meta.error) {
     configFormControl.error = true;
-  }
+     }
 
   return (
     <FormControl {...configFormControl}>
@@ -41,6 +42,9 @@ const CheckboxWrapper = ({
           label={label}
         />
       </FormGroup>
+      <FormHelperText>
+        <ErrorMessage  name ={name} />
+      </FormHelperText>
     </FormControl>
   );
 };

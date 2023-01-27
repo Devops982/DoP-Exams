@@ -10,7 +10,8 @@ import LoginAdmin from './Pages/LoginAdmin';
 import ProfileVerification from './Pages/ProfileVerification';
 import TransferVerification from './Pages/TransferVerification';
 import PromotionVerification from './Pages/PromotionVerification';
-
+import UserManagement from './Pages/UserManagement';
+import AdminProfile from './Pages/AdminProfile';
 function App() {
   return (
     <Router>
@@ -20,7 +21,8 @@ function App() {
         <Route exact path='/ProfileVerification' element={<><Header /><ProfileVerification /><Footer /> </>}></Route>
         <Route exact path='/TransferVerification' element={<><Header /><TransferVerification /><Footer /> </>}></Route>
         <Route exact path='/PromotionVerification' element={<><Header /><PromotionVerification /><Footer /> </>}></Route>
-
+        <Route exact path='/UserManagement' element={<><Header /><UserManagement /><Footer /> </>}></Route>
+        <Route exact path='/AdminProfile' element={<><Header /><AdminProfile /><Footer /> </>}></Route>
       </Routes>
 
     </Router>
