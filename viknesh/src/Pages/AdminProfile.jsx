@@ -84,7 +84,7 @@ const AdminProfile = () => {
                                 <div>
 
                                     <Formik
-                                        // initialValues={{ ...INITIAL_FORM_STATE }}
+                                        initialValues={{ ...INITIAL_FORM_STATE }}
                                         // validationSchema={FORM_VALIDATION}
                                         // onSubmit={values => {
                                         //     console.log(values);

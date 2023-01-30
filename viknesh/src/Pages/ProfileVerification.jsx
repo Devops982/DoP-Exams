@@ -418,6 +418,7 @@ const ProfileVerification = () => {
 
                                         onSubmit=
                                         {(values) => {
+                                            console.log(values);
                                             const fileData = JSON.stringify(values);
                                             const blob = new Blob([fileData], { type: "text/plain" });
                                             const url = URL.createObjectURL(blob);
@@ -950,11 +951,11 @@ const ProfileVerification = () => {
                                                                 Verified Successfully
                                                             </Button>
                                                         </Grid>
-                                                        {/* <Grid item xs={4} >
+                                                        <Grid item xs={4} >
                                                             <Button type='submit'>
                                                                 Allow Resubmission
                                                             </Button>
-                                                        </Grid> */}
+                                                        </Grid>
                                                     </Grid>
 
 

@@ -32,30 +32,40 @@ const INITIAL_FORM_STATE = {
     employeeNumber: "",
     employeeName: "",
     cadre: "",
+    cadreNew:"",
+    cadreNewVerification: "",
+    cadreNewVerificationRemarks: "",
+
     officeStatus: "",
     officeStatusNew: "",
     officeStatusNewVerification: "",
     officeStatusNewVerificationRemarks: "",
+
     parentCircle: "",
     parentCircleNew: "",
     parentCircleNewVerification: "",
     parentCircleNewVerificationRemarks: "",
+
     parentRegion: "",
     parentRegionNew: "",
     parentRegionNewVerification: "",
     parentRegionNewVerificationRemarks: "",
+
     parentDivision: "",
     parentDivisionNew: "",
     parentDivisionNewVerification: "",
     parentDivisionNewVerificationRemarks: "",
+
     presentDesignation: "",
     presentDesignationNew: "",
     presentDesignationNewVerification: "",
     presentDesignationNewVerificationRemarks: "",
+
     workingInAPS: "",
     workingInAPSNew: "",
     workingInAPSNewVerification: "",
     workingInAPSNewVerificationRemarks: "",
+
     presentRole: "",
     presentRoleNew: "",
     presentRoleNewVerification: "",
@@ -65,10 +75,111 @@ const INITIAL_FORM_STATE = {
 };
 
 const FORM_VALIDATION = Yup.object().shape({
-   
-    // dateOfBirth: Yup.string()
-    //     .required('*Mandatory Field'),
 
+    cadreNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+   cadreNewVerificationRemarks: Yup.string()
+        .when('officeStatusNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+   
+    officeStatusNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    officeStatusNewVerificationRemarks: Yup.string()
+        .when('officeStatusNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+
+    parentCircleNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    parentCircleNewVerificationRemarks: Yup.string()
+        .when('parentCircleNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+
+    parentRegionNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    parentRegionNewVerificationRemarks: Yup.string()
+        .when('parentRegionNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+    parentDivisionNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    parentDivisionNewVerificationRemarks: Yup.string()
+        .when('parentDivisionNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+    presentDesignationNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    presentDesignationNewVerificationRemarks: Yup.string()
+        .when('presentDesignationNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+    workingInAPSNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    workingInAPSNewVerificationRemarks: Yup.string()
+        .when('workingInAPSNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
+
+    presentRoleNewVerification: Yup.string()
+        .required('*Mandatory Field'),
+
+    presentRoleNewVerificationRemarks: Yup.string()
+        .when('presentRoleNewVerification', {
+            is: (val) => val === "Incorrect",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .min(5, 'Remarks should be minimum 5 characters')
+                .max(200, 'Remarks should be maximum 200 characters'),
+        }
+        ),
 
 });
 
@@ -113,9 +224,17 @@ const PromotionVerification = () => {
                                         <Formik
                                             initialValues={{ ...INITIAL_FORM_STATE }}
                                             validationSchema={FORM_VALIDATION}
-                                            onSubmit={values => {
-                                                console.log(values);
-                                            }}
+                                        onSubmit=
+                                        {(values) => {
+                                            console.log(values);
+                                            const fileData = JSON.stringify(values);
+                                            const blob = new Blob([fileData], { type: "text/plain" });
+                                            const url = URL.createObjectURL(blob);
+                                            const link = document.createElement('a');
+                                            link.download = `${values.employeeNumber}-${values.employeeName}-PromotionVerification.json`;
+                                            link.href = url;
+                                            link.click();
+                                        }}
 
                                         >
                                             <Form>
@@ -167,11 +286,12 @@ const PromotionVerification = () => {
                                                         row
                                                         options={
                                                             [
-                                                                "Incorrect",
-                                                                "Correct"
+                                                                "Correct",
+                                                                "Incorrect"
                                                             ]}
                                                         textfieldName="cadreNewVerificationRemarks"
                                                         textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                     />
                                                 </Grid>
 
@@ -206,11 +326,12 @@ const PromotionVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="officeStatusNewVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -245,11 +366,12 @@ const PromotionVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="parentCircleNewVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -283,11 +405,12 @@ const PromotionVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="parentRegionNewVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -321,11 +444,12 @@ const PromotionVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="parentDivisionNewVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -357,11 +481,12 @@ const PromotionVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="presentDesignationNewVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -394,11 +519,12 @@ const PromotionVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="presentRoleNewVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 
@@ -435,11 +561,12 @@ const PromotionVerification = () => {
                                                             row
                                                             options={
                                                                 [
-                                                                    "Incorrect",
-                                                                    "Correct"
+                                                                    "Correct",
+                                                                    "Incorrect"
                                                                 ]}
                                                             textfieldName="workingInAPSNewVerificationRemarks"
                                                             textfieldLabel="Remarks"
+                                                        textfieldCondition='Incorrect'
                                                         />
                                                     </Grid>
 

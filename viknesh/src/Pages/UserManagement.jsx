@@ -36,13 +36,33 @@ const INITIAL_FORM_STATE = {
     emailNewOption: "",
     mobileNumber: "",
     mobileNumberNew: "",
-    mobileNumberOption: "",
+    mobileNumberNewOption: "",
     };
 
 const FORM_VALIDATION = Yup.object().shape({
 
-    // dateOfBirth: Yup.string()
-    //     .required('*Mandatory Field'),
+
+    emailNew: Yup.string()
+        .when('emailNewOption', {
+            is: (val) => val === "Yes",
+            then: Yup.string()
+                .email('Invalid email.')
+                .required('*Mandatory Field'),
+        }
+        ),
+
+   
+    mobileNumberNew: Yup.string()
+        .when('mobileNumberNewOption', {
+            is: (val) => val === "Yes",
+            then: Yup.string()
+                .required('*Mandatory Field')
+                .matches(/^[0-9]+$/, "Enter valid Mobile Number")
+                .min(10, 'Mobile Number should be exactly 10 digits')
+                .max(10, 'Mobile Number should be exactly 10 digits'),
+        }
+        ),
+
 
 
 });
@@ -88,9 +108,18 @@ const UserManagement = () => {
                                     <Formik
                                         initialValues={{ ...INITIAL_FORM_STATE }}
                                         validationSchema={FORM_VALIDATION}
-                                        onSubmit={values => {
+                                        onSubmit=
+                                        {(values) => {
                                             console.log(values);
+                                            const fileData = JSON.stringify(values);
+                                            const blob = new Blob([fileData], { type: "text/plain" });
+                                            const url = URL.createObjectURL(blob);
+                                            const link = document.createElement('a');
+                                            link.download = `${values.employeeNumber}-${values.employeeName}-UserManagement.json`;
+                                            link.href = url;
+                                            link.click();
                                         }}
+
 
                                     >
                                         <Form>
@@ -140,12 +169,13 @@ const UserManagement = () => {
                                                             ]}
                                                         textfieldName="emailNew"
                                                         textfieldLabel="New Email"
+                                                        textfieldCondition='Yes'
                                                     />
                                                 </Grid>
 
                                                 <Grid item xs={10} align='left'>
                                                     <RadiobuttonTextbox
-                                                        name="monileNumberNewOption"
+                                                        name="mobileNumberNewOption"
                                                         label="Modify Mobile Number"
                                                         row
                                                         options={
@@ -155,6 +185,7 @@ const UserManagement = () => {
                                                             ]}
                                                         textfieldName="mobileNumberNew"
                                                         textfieldLabel="New Mobile Number"
+                                                        textfieldCondition='Yes'
                                                     />
                                                 </Grid>
 
