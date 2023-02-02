@@ -6,7 +6,7 @@ import MinimalLayout from 'layout/MinimalLayout';
 import Home from 'views/pages/Home';
 import SignInSide from 'components/Login';
 import Signup from 'components/Signup';
-import LoginAdmin from 'components/LoginAdmin'
+import LoginAdmin from 'views/pages/LoginAdmin'
 
 
 // login option 3 routing

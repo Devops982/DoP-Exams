@@ -21,10 +21,12 @@ const ButtonWrapper = ({
 
   return (
     <Button
-      {...configButton
+      {...configButton   
        }
+     
     >
       {children}
+    
     </Button>
   );
 };

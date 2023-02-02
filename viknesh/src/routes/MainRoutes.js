@@ -9,6 +9,9 @@ import TransferVerification from 'views/pages/TransferVerification';
 import PromotionVerification from 'views/pages/PromotionVerification';
 import AdminProfile from 'views/pages/AdminProfile';
 import UserManagement from 'views/pages/UserManagement';
+import ReportsDashboard from 'views/pages/ReportsDashboard';
+import ProfileVerificationMain from "views/pages/ProfileVerificationMain";
+import TransferVerificationMain from 'views/pages/TransferVerificationMain';
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
@@ -25,70 +28,99 @@ const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
-    path: '/Admin',
-    element: <MainLayout />,
-    children: [
+  path: "/Admin",
+  element: <MainLayout />,
+  children: [
+    {
+      path: "",
+      element: <DashboardDefault />,
+    },
+    {
+      path: "/Admin",
+      children: [
         {
-            path: 'Dashboard',
-            element: <DashboardDefault/>
+          path: "Admin",
+          element: <DashboardDefault />,
         },
+      ],
+    },
+    {
+      path: "",
+      children: [
         {
-            path: '/Admin',
-            children: [
-                {
-                    path: 'Admin',
-                    element: <DashboardDefault />
-                }
-            ]
+          path: "ProfileVerification",
+          element: <ProfileVerification />,
         },
+      ],
+    },
+
+    {
+      path: "",
+      children: [
         {
-            path: '',
-            children: [
-                {
-                    path: 'ProfileVerification',
-                    element: <ProfileVerification />
-                }
-            ]
+          path: "ProfileVerificationMain",
+          element: <ProfileVerificationMain />,
         },
+      ],
+    },
+
+    {
+      path: "",
+      children: [
         {
-            path: '',
-            children: [
-                {
-                    path: 'TransferVerification',
-                    element: <TransferVerification />
-                }
-            ]
+          path: "TransferVerificationMain",
+          element: <TransferVerificationMain />,
         },
+      ],
+    },
+
+    {
+      path: "",
+      children: [
         {
-            path: '',
-            children: [
-                {
-                    path: 'PromotionVerification',
-                    element: <PromotionVerification />
-                }
-            ]
+          path: "TransferVerification",
+          element: <TransferVerification />,
         },
+      ],
+    },
+    {
+      path: "",
+      children: [
         {
-            path: '',
-            children: [
-                {
-                    path: 'UserManagement',
-                    element: <UserManagement />
-                }
-            ]
+          path: "PromotionVerification",
+          element: <PromotionVerification />,
         },
-  
+      ],
+    },
+    {
+      path: "",
+      children: [
         {
-            path: '',
-            children: [
-                {
-                    path: 'AdminProfile',
-                    element: <AdminProfile />
-                }
-            ]
+          path: "UserManagement",
+          element: <UserManagement />,
         },
-       
-    ]
+      ],
+    },
+
+    {
+      path: "",
+      children: [
+        {
+          path: "AdminProfile",
+          element: <AdminProfile />,
+        },
+      ],
+    },
+    {
+      path: "",
+      children: [
+        {
+          path: "ReportsDashboard",
+          element: <ReportsDashboard />,
+        },
+      ],
+    },
+  ],
 };
 
 export default MainRoutes;
