@@ -12,6 +12,7 @@ import UserManagement from 'views/pages/UserManagement';
 import ReportsDashboard from 'views/pages/ReportsDashboard';
 import ProfileVerificationMain from "views/pages/ProfileVerificationMain";
 import TransferVerificationMain from 'views/pages/TransferVerificationMain';
+import PromotionVerificationMain from 'views/pages/PromotionVerificationMain';
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
@@ -44,15 +45,15 @@ const MainRoutes = {
         },
       ],
     },
-    {
-      path: "",
-      children: [
-        {
-          path: "ProfileVerification",
-          element: <ProfileVerification />,
-        },
-      ],
-    },
+    // {
+    //   path: "",
+    //   children: [
+    //     {
+    //       path: "ProfileVerification",
+    //       element: <ProfileVerification />,
+    //     },
+    //   ],
+    // },
 
     {
       path: "",
@@ -74,24 +75,35 @@ const MainRoutes = {
       ],
     },
 
-    {
+    // {
+    //   path: "",
+    //   children: [
+    //     {
+    //       path: "TransferVerification",
+    //       element: <TransferVerification />,
+    //     },
+    //   ],
+    // },
+    // {
+    //   path: "",
+    //   children: [
+    //     {
+    //       path: "PromotionVerification",
+    //       element: <PromotionVerification />,
+    //     },
+    //   ],
+    // },
+
+        {
       path: "",
       children: [
         {
-          path: "TransferVerification",
-          element: <TransferVerification />,
+          path: "PromotionVerificationMain",
+          element: <PromotionVerificationMain />,
         },
       ],
     },
-    {
-      path: "",
-      children: [
-        {
-          path: "PromotionVerification",
-          element: <PromotionVerification />,
-        },
-      ],
-    },
+    
     {
       path: "",
       children: [

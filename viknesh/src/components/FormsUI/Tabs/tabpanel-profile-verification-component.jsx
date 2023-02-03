@@ -81,10 +81,18 @@ export default function ProfileTab() {
             borderRadius="4px"
           >
             {profileVerificationStatus === "Verified" && (
-              <ButtonModal color="success" label="Verified" />
+              <ButtonModal
+                color="success"
+                label="Verified"
+                pageName="ProfileVerification"
+              />
             )}
             {profileVerificationStatus === "Pending" && (
-              <ButtonModal color="error" label="Pending" />
+              <ButtonModal
+                color="error"
+                label="Pending"
+                pageName="ProfileVerification"
+              />
             )}
           </Box>
         );

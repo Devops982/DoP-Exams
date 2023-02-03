@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import DataGridInformation from "../DataTable/datatable-component";
 
-import { TransferDetails } from "../../ModelData";
+import { PromotionDetails } from "../../ModelData";
 
 import ButtonModal from "../Button/button-modal-component";
 
@@ -43,37 +43,39 @@ function a11yProps(index) {
   };
 }
 
-export default function TransferTab() {
+export default function PromotionTab() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const verifiedProfile = TransferDetails.filter((e) =>
-    e.transferVerificationStatus.includes("Verified")
+  const verifiedProfile = PromotionDetails.filter((e) =>
+    e.promotionVerificationStatus.includes("Verified")
   );
 
-  const pendingVerificationProfile = TransferDetails.filter((e) =>
-    e.transferVerificationStatus.includes("Pending")
+  const pendingVerificationProfile = PromotionDetails.filter((e) =>
+    e.promotionVerificationStatus.includes("Pending")
   );
 
   const columns = [
     { field: "employeeNumber", headerName: "Employee Number", flex: 1 },
     { field: "employeeName", headerName: "Employee Name", flex: 1 },
-    { field: "cadre", headerName: "Cadre" },
-    { field: "officeStatus", headerName: "Present Office" },
-    { field: "officeStatusNew", headerName: "Transferred Office" },
-    { field: "parentDivision", headerName: "Present Division" },
-    { field: "parentDivisionNew", headerName: "Transferred Division" },
+    { field: "cadre", headerName: "Present Cadre", flex: 1 },
+    { field: "cadreNew", headerName: "Promoted Cadre", flex: 1 },
+
+    { field: "officeStatus", headerName: "Present Office", flex: 1 },
+    { field: "officeStatusNew", headerName: "Promoted Office", flex: 1 },
+    { field: "parentCircle", headerName: "Present Circle", flex: 1 },
+    { field: "parentCircleNew", headerName: "Promoted Circle", flex: 1 },
 
     {
-      field: "transferVerificationStatus",
+      field: "promotionVerificationStatus",
       headerName: "Verification Status",
       flex: 1,
       headerAlign: "center",
       align: "center",
-      renderCell: ({ row: { transferVerificationStatus } }) => {
+      renderCell: ({ row: { promotionVerificationStatus } }) => {
         return (
           <Box
             width="60%"
@@ -83,18 +85,18 @@ export default function TransferTab() {
             justifyContent="center"
             borderRadius="4px"
           >
-            {transferVerificationStatus === "Verified" && (
+            {promotionVerificationStatus === "Verified" && (
               <ButtonModal
                 color="success"
                 label="Verified"
-                pageName="TransferVerification"
+                pageName="PromotionVerification"
               />
             )}
-            {transferVerificationStatus === "Pending" && (
+            {promotionVerificationStatus === "Pending" && (
               <ButtonModal
                 color="error"
                 label="Pending"
-                pageName="TransferVerification"
+                pageName="PromotionVerification"
               />
             )}
           </Box>
@@ -129,7 +131,7 @@ export default function TransferTab() {
         <DataGridInformation rows={verifiedProfile} columns={columns} />
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}>
-        <DataGridInformation rows={TransferDetails} columns={columns} />
+        <DataGridInformation rows={PromotionDetails} columns={columns} />
       </TabPanel>
     </Box>
   );

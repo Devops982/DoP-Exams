@@ -143,7 +143,7 @@ export default function LoginEmployee() {
                   <Grid item xs={12}>
                     <TextfieldPassword
                       name="otpMobile"
-                      label="Mobile OTP222"
+                      label="Mobile OTP"
                     />
                   </Grid>
 

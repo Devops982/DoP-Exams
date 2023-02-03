@@ -46,7 +46,7 @@ const utilities = {
       id: "Promotion-Verification",
       title: "Promotion Verification",
       type: "item",
-      url: "/Admin/PromotionVerification",
+      url: "/Admin/PromotionVerificationMain",
       icon: icons.WorkOutlineIcon,
       breadcrumbs: false,
     },
