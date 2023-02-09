@@ -18,14 +18,20 @@ const TextfieldWrapperPassword = ({
 
   const handleTogglePassword = () => setShowPassword(showPassword => !showPassword);
  
-
+  const preventCopyPaste = e => {
+    e.preventDefault()
+   // alert("Copy & Paste is not allowed!")
+  }
 
 
   const configTextfield = {
     ...field,
     ...otherProps,
+    autoComplete: "off",
     fullWidth: true,
     variant: 'outlined',
+  
+  
  
     
     
@@ -38,6 +44,13 @@ const TextfieldWrapperPassword = ({
 
   return (
     <TextField {...configTextfield}
+    
+      onCopy={(e) => preventCopyPaste(e)}
+      onPaste={(e) => preventCopyPaste(e)}
+      onCut={(e) => preventCopyPaste(e)}
+      onDrag={(e) => preventCopyPaste(e)}
+      onDrop={(e) => preventCopyPaste(e)}
+
       type= { showPassword ? 'text' : 'password'}
             InputProps={{
         endAdornment: (

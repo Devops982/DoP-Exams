@@ -13,6 +13,7 @@ import ReportsDashboard from 'views/pages/ReportsDashboard';
 import ProfileVerificationMain from "views/pages/ProfileVerificationMain";
 import TransferVerificationMain from 'views/pages/TransferVerificationMain';
 import PromotionVerificationMain from 'views/pages/PromotionVerificationMain';
+import IPDetails from 'views/pages/IPDetails';
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
@@ -94,7 +95,7 @@ const MainRoutes = {
     //   ],
     // },
 
-        {
+    {
       path: "",
       children: [
         {
@@ -103,7 +104,7 @@ const MainRoutes = {
         },
       ],
     },
-    
+
     {
       path: "",
       children: [
@@ -129,6 +130,16 @@ const MainRoutes = {
         {
           path: "ReportsDashboard",
           element: <ReportsDashboard />,
+        },
+      ],
+    },
+
+    {
+      path: "",
+      children: [
+        {
+          path: "IPDetails",
+          element: <IPDetails />,
         },
       ],
     },

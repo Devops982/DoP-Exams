@@ -104,6 +104,7 @@ const UserManagement = () => {
                                     <Formik
                                         initialValues={{ ...INITIAL_FORM_STATE }}
                                         validationSchema={FORM_VALIDATION}
+                                        validateOnMount
                                         onSubmit=
                                         {(values) => {
                                             console.log(values);

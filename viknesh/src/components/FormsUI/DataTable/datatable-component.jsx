@@ -1,10 +1,7 @@
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-//import { tokens } from "../../theme";
-import { mockDataContacts } from "./mockData";
 import { useField } from "formik";
-//import Header from "../../components/Header";
-//import { useTheme , Typography} from "@mui/material";
+
 
 const DataGridInformation = (
   {

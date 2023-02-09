@@ -1,5 +1,5 @@
 import React from 'react';
-import {  TextField} from "@mui/material";
+import { TextField } from "@mui/material";
 import { useField } from 'formik';
 
 
@@ -9,13 +9,23 @@ const TextfieldWrapper = ({
 }) => {
   const [field, meta] = useField(name);
 
+  const preventCopyPaste = e => {
+    e.preventDefault()
+   // alert("Copy & Paste is not allowed!")
+  }
+
   const configTextfield = {
     ...field,
     ...otherProps,
+    autoComplete: "off",
     fullWidth: true,
     variant: 'outlined',
-    defaultValue:""
-  };
+
+
+
+
+
+  }
 
   if (meta && meta.touched && meta.error) {
     configTextfield.error = true;
@@ -23,7 +33,15 @@ const TextfieldWrapper = ({
   }
 
   return (
-    <TextField {...configTextfield}   />
+    <TextField {...configTextfield}
+    
+      onCopy={(e) => preventCopyPaste(e)}
+      onPaste={(e) => preventCopyPaste(e)}
+      onCut={(e) => preventCopyPaste(e)}
+      onDrag={(e) => preventCopyPaste(e)}
+      onDrop={(e) => preventCopyPaste(e)}
+
+    />
   );
 };
 export default TextfieldWrapper;

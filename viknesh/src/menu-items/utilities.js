@@ -25,7 +25,6 @@ const utilities = {
   // title: 'Utilities',
   type: "group",
   children: [
-
     {
       id: "Profile-Verification-Main",
       title: "Profile Verification",
@@ -73,6 +72,15 @@ const utilities = {
       type: "item",
       url: "/Admin/ReportsDashboard",
       icon: icons.WorkOutlineIcon,
+      breadcrumbs: false,
+    },
+
+    {
+      id: "IP-Details",
+      title: "IP Details",
+      type: "item",
+      url: "/Admin/IPDetails",
+      icon: icons.PreviewIcon,
       breadcrumbs: false,
     },
   ],

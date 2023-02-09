@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { ThemeProvider } from "@emotion/react";
 import {
@@ -12,14 +12,14 @@ import {
     createTheme,
     Radio,
 } from '@mui/material';
-import Textfield from '../Components/FormsUI/Textfield/textfield-component';
-import TextfieldPassword from '../Components/FormsUI/Textfield/textfield-password-component';
-import Select from '../Components/FormsUI/Select/select-component';
-import DateTimePicker from '../Components/FormsUI/DataTimePicker/datepicker-component';
-import Checkbox from '../Components/FormsUI/Checkbox/checkbox-component';
-import Button from '../Components/FormsUI/Button/button-component';
-import Radiobutton from '../Components/FormsUI/Radiobutton/radiobutton-component';
-import RadiobuttonTextbox from '../Components/FormsUI/Radiobutton/radiobutton-textbox-component';
+import Textfield from '../../components/FormsUI/Textfield/textfield-component';
+import TextfieldPassword from '../../components/FormsUI/Textfield/textfield-password-component';
+import Select from '../../components/FormsUI/Select/select-component';
+import DateTimePicker from '../../components/FormsUI/DataTimePicker/datepicker-component';
+import Checkbox from '../../components/FormsUI/Checkbox/checkbox-component';
+import Button from '../../components/FormsUI/Button/button-component';
+import Radiobutton from '../../components/FormsUI/Radiobutton/radiobutton-component';
+import RadiobuttonTextbox from '../../components/FormsUI/Radiobutton/radiobutton-textbox-component';
 
 const theme = createTheme();
 
@@ -125,8 +125,8 @@ const FORM_VALIDATION = Yup.object().shape({
         .max(50, 'Father Name should be maximum 50 characters'),
 
     maritalStatus: Yup.string()
-       .required('*Mandatory Field'),
-       
+        .required('*Mandatory Field'),
+
     spouseName: Yup.string()
         .when('maritalStatus', {
             is: (val) => val === "Married",
@@ -171,20 +171,25 @@ const FORM_VALIDATION = Yup.object().shape({
 
     dccs: Yup.string()
         .required('*Mandatory Field'),
-        
+
     dateOfJoiningThePresentCadre: Yup.string()
         .required('*Mandatory Field'),
 
     termsOfService: Yup.boolean()
-       .oneOf([true], 'The terms and conditions must be accepted.1')
-       .required('The terms and conditions must be accepted.'),
+        .oneOf([true], 'The terms and conditions must be accepted.1')
+        .required('The terms and conditions must be accepted.'),
+
+
 });
 
 
 const Signup = () => {
 
+    //const isValid = !Object.keys(errors).length;
+
 
     return (
+
         <ThemeProvider theme={theme}>
             <Container component={"main"} maxWidth="xl">
 
@@ -220,9 +225,12 @@ const Signup = () => {
 
                                         <Formik
                                             initialValues={{ ...INITIAL_FORM_STATE }}
+                                            // validateOnMount
                                             validationSchema={FORM_VALIDATION}
+
                                             onSubmit=
                                             {(values) => {
+
                                                 const fileData = JSON.stringify(values);
                                                 const blob = new Blob([fileData], { type: "text/plain" });
                                                 const url = URL.createObjectURL(blob);
@@ -237,6 +245,7 @@ const Signup = () => {
                                              }} */
 
                                         >
+
 
                                             {/* {({ values }) => (
                                                 <Form>
@@ -253,6 +262,9 @@ const Signup = () => {
                                                             name="employeeNumber"
                                                             label="Employee Number"
 
+
+
+
                                                         />
                                                     </Grid>
 
@@ -260,6 +272,7 @@ const Signup = () => {
                                                         <TextfieldPassword
                                                             name="employeeNumberConfirmation"
                                                             label="Employee Number Confirmation"
+                                                          
 
                                                         />
                                                     </Grid>
@@ -274,7 +287,7 @@ const Signup = () => {
                                                         <TextfieldPassword
                                                             name="employeeNameConfirmation"
                                                             label="Employee Name Confirmation"
-
+                                                          
                                                         />
                                                     </Grid>
 
@@ -508,7 +521,13 @@ const Signup = () => {
                                                     </Grid>
                                                     <Grid container justifyContent="center">
                                                         <Grid item xs={6} justify='center'>
-                                                            <Button type='submit'>
+                                                            <Button
+                                                                color='success'
+
+
+
+                                                                type='submit'
+                                                            >
                                                                 REGISTER
                                                             </Button>
                                                         </Grid>
@@ -518,6 +537,8 @@ const Signup = () => {
                                                 </Grid>
 
                                             </Form>
+
+
                                         </Formik>
 
                                     </div>
@@ -531,6 +552,7 @@ const Signup = () => {
             </Container>
         </ThemeProvider>
     );
+
 };
 
 export default Signup;

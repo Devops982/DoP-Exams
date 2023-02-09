@@ -5,8 +5,9 @@ import Loadable from 'ui-component/Loadable';
 import MinimalLayout from 'layout/MinimalLayout';
 import Home from 'views/pages/Home';
 import SignInSide from 'components/Login';
-import Signup from 'components/Signup';
+
 import LoginAdmin from 'views/pages/LoginAdmin'
+import Signup from 'views/pages/Signup';
 
 
 // login option 3 routing

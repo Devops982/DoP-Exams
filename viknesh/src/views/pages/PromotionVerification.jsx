@@ -570,13 +570,15 @@ const PromotionVerification = () => {
                                            
                                                     <Grid container justifyContent="center" spacing={3} marginTop = {2}>
                                                         <Grid item xs={4} >
-                                                            <Button type='submit' >
+                                                            <Button type='submit'
+                                                            color = 'success' >
                                                                                                                             
                                                                 Verified Successfully
                                                             </Button>
                                                         </Grid>
                                                         <Grid item xs={4} >
-                                                            <Button type='submit'>
+                                                            <Button type='submit'
+                                                            color = 'warning'>
                                                                 Allow Resubmission
                                                             </Button>
                                                         </Grid>

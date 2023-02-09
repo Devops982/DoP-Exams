@@ -89,7 +89,7 @@ export default function ProfileTab() {
             )}
             {profileVerificationStatus === "Pending" && (
               <ButtonModal
-                color="error"
+                color="warning"
                 label="Pending"
                 pageName="ProfileVerification"
               />

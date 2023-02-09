@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { ThemeProvider } from "@emotion/react";
+
 
 
 import {
@@ -10,22 +10,16 @@ import {
     Typography,
     Paper,
     Box,
-    Avatar,
-    createTheme,
+
 
 
 } from '@mui/material';
 
 
 import Textfield from '../../components/FormsUI/Textfield/textfield-component';
-import TextfieldPassword from '../../components/FormsUI/Textfield/textfield-password-component';
-import Select from '../../components/FormsUI/Select/select-component';
-import DateTimePicker from '../../components/FormsUI/DataTimePicker/datepicker-component';
-import Checkbox from '../../components/FormsUI/Checkbox/checkbox-component';
 import Button from '../../components/FormsUI/Button/button-component';
-import Radiobutton from '../../components/FormsUI/Radiobutton/radiobutton-component';
 import RadiobuttonTextbox from '../../components/FormsUI/Radiobutton/radiobutton-textbox-component';
-import Sidedrawer from '../../components/FormsUI/Sidedrawer/SidedrawerAdmin-component';
+
 
 
 const INITIAL_FORM_STATE = {
@@ -942,13 +936,15 @@ const ProfileVerification = () => {
 
                                                 <Grid container justifyContent="center" spacing={3} marginTop={2}>
                                                     <Grid item xs={4} >
-                                                        <Button type='submit' >
+                                                        <Button type='submit'
+                                                        color = 'success' >
 
                                                             Verified Successfully
                                                         </Button>
                                                     </Grid>
                                                     <Grid item xs={4} >
-                                                        <Button type='submit'>
+                                                        <Button type='submit'
+                                                        color = 'warning'>
                                                             Allow Resubmission
                                                         </Button>
                                                     </Grid>

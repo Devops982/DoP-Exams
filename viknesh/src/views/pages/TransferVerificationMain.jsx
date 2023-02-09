@@ -22,7 +22,7 @@ const TransferVerificationMain = () => {
       <Paper
         elevation={5}
         sx={{
-          padding: "2rem",
+          padding: "5px",
           marginTop: "1rem",
           border: "1px solid #2673E2",
         }}

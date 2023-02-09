@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import VerifiedUserRoundedIcon from "@mui/icons-material/VerifiedUserRounded";
 import DangerousRoundedIcon from "@mui/icons-material/DangerousRounded";
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import ProfileVerification from "views/pages/ProfileVerification";
 import ProfileVerifiedSuccess from "views/pages/ProfileVerifiedSuccess";
 import TransferVerification from "views/pages/TransferVerification";
@@ -12,6 +13,7 @@ import PromotionVerification from "views/pages/PromotionVerification";
 import { Dashboard } from "@mui/icons-material";
 import PromotionVerifiedSuccess from "views/pages/PromotionVerifiedSuccess";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { yellow } from '@mui/material/colors';
 
 const style = {
   
@@ -35,17 +37,20 @@ const ButtonModal = ({color, label , pageName, ...otherProps}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const warningModal = yellow[800];
 
   return (
     <div>
       <Button onClick={handleOpen} color={color}>
         {label === "Pending" ? (
-          <DangerousRoundedIcon />
+          <ReportProblemIcon />
         ) : (
           <VerifiedUserRoundedIcon />
         )}
         {label}
-        <VisibilityIcon color="secondary" fontSize="small" />
+        <VisibilityIcon sx={{
+          color: "#777777" }}
+          fontSize="small" />
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

@@ -94,7 +94,7 @@ export default function PromotionTab() {
             )}
             {promotionVerificationStatus === "Pending" && (
               <ButtonModal
-                color="error"
+                color="warning"
                 label="Pending"
                 pageName="PromotionVerification"
               />

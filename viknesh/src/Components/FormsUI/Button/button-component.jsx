@@ -1,10 +1,9 @@
 import React from 'react';
 import { Button } from "@mui/material"; 
-import { useFormikContext } from 'formik';
+import { Formik, useFormikContext } from 'formik';
 
 const ButtonWrapper = ({
   children,
-  color,
   ...otherProps
 }) => {
   const { submitForm } = useFormikContext();
@@ -14,15 +13,18 @@ const ButtonWrapper = ({
   }
 
   const configButton = {
+    ...otherProps,
     variant: 'contained',
     fullWidth: true,
-    onClick: handleSubmit
+    onClick: handleSubmit,
+   // disabled: !(Formik.isValid && Formik.dirty)
   }
+
+  
 
   return (
     <Button
-      {...configButton   
-       }
+      {...configButton }
      
     >
       {children}

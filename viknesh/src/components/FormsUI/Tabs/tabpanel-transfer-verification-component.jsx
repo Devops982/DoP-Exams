@@ -7,10 +7,16 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import DataGridInformation from "../DataTable/datatable-component";
+import { yellow } from '@mui/material/colors';
+
+
 
 import { TransferDetails } from "../../ModelData";
 
 import ButtonModal from "../Button/button-modal-component";
+import { TextField } from "@mui/material";
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,6 +52,8 @@ function a11yProps(index) {
 export default function TransferTab() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const warningModal = yellow[800];
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -89,10 +97,13 @@ export default function TransferTab() {
                 label="Verified"
                 pageName="TransferVerification"
               />
+
+        
             )}
             {transferVerificationStatus === "Pending" && (
               <ButtonModal
-                color="error"
+               
+                color = "warning"
                 label="Pending"
                 pageName="TransferVerification"
               />
@@ -105,7 +116,7 @@ export default function TransferTab() {
 
   return (
     <Box sx={{ bgcolor: "background.paper" }}>
-      <AppBar position="static">
+      <AppBar position="static" >
         <Tabs
           value={value}
           onChange={handleChange}

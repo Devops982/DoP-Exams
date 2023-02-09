@@ -105,6 +105,7 @@ const RadiotextWrapper = ({
                                 name={textfieldName}
                                 label={textfieldLabel}
                                 disabled={textfieldDisabled}
+                                autoComplete="off"
                                 multiline
                                 maxRows={10}
 
