@@ -60,6 +60,7 @@ const INITIAL_FORM_STATE = {
     presentRoleNew: "",
     presentRoleNewVerification: "",
     presentRoleNewVerificationRemarks: "",
+    transferVerificationStatus:"",
 
 
 };

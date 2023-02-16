@@ -14,6 +14,7 @@ import ProfileVerificationMain from "views/pages/ProfileVerificationMain";
 import TransferVerificationMain from 'views/pages/TransferVerificationMain';
 import PromotionVerificationMain from 'views/pages/PromotionVerificationMain';
 import IPDetails from 'views/pages/IPDetails';
+import OfficeManagement from 'views/pages/OfficeManagement';
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
@@ -33,10 +34,11 @@ const MainRoutes = {
   path: "/Admin",
   element: <MainLayout />,
   children: [
-    {
-      path: "",
-      element: <DashboardDefault />,
-    },
+    //DISABLED DASHBOARD DEFAULT - INDEX.js COMMENTED DASHBOARD
+    // {
+    //   path: "",
+    //   element: <DashboardDefault />,
+    // },
     {
       path: "/Admin",
       children: [
@@ -46,15 +48,7 @@ const MainRoutes = {
         },
       ],
     },
-    // {
-    //   path: "",
-    //   children: [
-    //     {
-    //       path: "ProfileVerification",
-    //       element: <ProfileVerification />,
-    //     },
-    //   ],
-    // },
+
 
     {
       path: "",
@@ -143,6 +137,18 @@ const MainRoutes = {
         },
       ],
     },
+
+    {
+      path: "",
+      children: [
+        {
+          path: "OfficeManagement",
+          element: <OfficeManagement />,
+        },
+      ],
+    },
+
+
   ],
 };
 

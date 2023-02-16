@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,8 +10,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import {Typography  } from '@mui/material';
-import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Logo from '../../Images/IPlogo.png';
 import { Formik, Form } from 'formik';
@@ -20,10 +19,7 @@ import Footer from '../../components/Footer';
 import SendIcon from '@mui/icons-material/Send';
 import Textfield from '../../components/FormsUI/Textfield/textfield-component';
 import TextfieldPassword from '../../components/FormsUI/Textfield/textfield-password-component';
-import ButtonComponent from '../../components/FormsUI/Button/button-component';
-import ButtonMobileOTP from '../../components/FormsUI/Button/button-MobileOTP-component';
-
-
+import Button from '../../components/FormsUI/Button/button-component';
 
 
 
@@ -75,37 +71,6 @@ export default function LoginEmployee() {
       password: data.get('password'),
     });
   };
-
- 
-  const [mobileSeconds, setMobileSeconds] = useState(0); // set initial seconds to 60
-  const [emailSeconds, setEmailSeconds] = useState(0); 
-  useEffect(() => {
-    if (mobileSeconds > 0) {
-      // decrease seconds every second
-      const countdown = setTimeout(() => setMobileSeconds(mobileSeconds - 1), 1000);
-
-      // clean up the timeout when the component unmounts or seconds reach 0
-      return () => clearTimeout(countdown);
-    }
-
-    if (emailSeconds > 0) {
-      // decrease seconds every second
-      const countdown = setTimeout(() => setEmailSeconds(emailSeconds - 1), 1000);
-
-      // clean up the timeout when the component unmounts or seconds reach 0
-      return () => clearTimeout(countdown);
-    }
-  }, [emailSeconds]);
-
-  const handleSendMobileOTP = () => {
-    // send OTP here
-    setMobileSeconds(60); // reset timer to 60 seconds
-  };
-  const handleSendEmailOTP = () => {
-    // send OTP here
-    setEmailSeconds(60); // reset timer to 60 seconds
-  };
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -168,20 +133,11 @@ export default function LoginEmployee() {
                       label="Email OTP"
                     />
                   </Grid>
-
                   <Grid container justifyContent="right">
                   <Grid item xs={6} mt={2} justify='center'>
-                      {emailSeconds === 0 ? (
-                        <Button
-                          variant='contained'
-
-                          onClick={handleSendEmailOTP}>Send Email OTP</Button>
-                      ) : (
-                        <Button
-                          variant='contained'
-                          disabled>
-                            Resend Email OTP in {emailSeconds} seconds...</Button>
-                      )}
+                    <Button>
+                      Send Email OTP
+                    </Button>
                   </Grid>
                   </Grid>
 
@@ -201,34 +157,21 @@ export default function LoginEmployee() {
                   </Grid>
                   <Grid container justifyContent="right">
                   <Grid item xs={6} mt = {2} justify='center'>
-                      <ButtonMobileOTP />
-                 
-{/*                  
-                                
-                      {mobileSeconds === 0 ? (
-                        <Button 
-                          variant = 'contained'
-                         
-                          onClick={handleSendMobileOTP}>Send Mobile OTP</Button>
-                      ) : (
-                          <Button
-                            variant= 'contained'                           
-                             disabled>
-                            Resend Mobile OTP in {mobileSeconds} seconds...</Button>
-                      )} */}
+                    <Button>
+                      Send Mobile OTP
+                    </Button>
                   </Grid>
                   </Grid>
-             
+
 
 
 
                   <Grid container justifyContent="center">
                     <Grid item xs={6} mt={4} justify='center'>
                       <Link to="/profile">
-                      
-                        <ButtonComponent>
+                        <Button>
                           LOGIN
-                        </ButtonComponent>
+                        </Button>
                       </Link>
                     </Grid>
                   </Grid>

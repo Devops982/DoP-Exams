@@ -83,6 +83,8 @@ const INITIAL_FORM_STATE = {
     presentRole: "",
     presentRoleVerification: "",
     presentRoleVerificationRemarks: "",
+    profileVerificationStatus: "",
+
 
 
 };

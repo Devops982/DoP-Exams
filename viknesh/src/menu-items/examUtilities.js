@@ -20,14 +20,14 @@ const icons = {
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 
-const utilities = {
-  id: "utilities",
-  title: 'Candidate Profile Management',
+const examutilities = {
+  id: "examutilities",
+  title: 'Exam Management',
   type: "group",
   children: [
     {
       id: "Profile-Verification-Main",
-      title: "Profile Verification",
+      title: "Exam Configuration",
       type: "item",
       url: "/Admin/ProfileVerificationMain",
       icon: icons.HowToRegIcon,
@@ -35,7 +35,7 @@ const utilities = {
     },
     {
       id: "Transfer-Verification-Main",
-      title: "Transfer Verification",
+      title: "Exam Conducting Offices",
       type: "item",
       url: "/Admin/TransferVerificationMain",
       icon: icons.TransferWithinAStationIcon,
@@ -43,7 +43,7 @@ const utilities = {
     },
     {
       id: "Promotion-Verification",
-      title: "Promotion Verification",
+      title: "Exam Calender",
       type: "item",
       url: "/Admin/PromotionVerificationMain",
       icon: icons.WorkOutlineIcon,
@@ -51,7 +51,7 @@ const utilities = {
     },
     {
       id: "UseraManagement",
-      title: "User Management",
+      title: "Mapping of Officers for Exam",
       type: "item",
       url: "/Admin/UserManagement",
       icon: icons.CreateIcon,
@@ -60,7 +60,7 @@ const utilities = {
 
     {
       id: "OfficeManagement",
-      title: "Office Management",
+      title: "Schedule/Notification",
       type: "item",
       url: "/Admin/OfficeManagement",
       icon: icons.CreateIcon,
@@ -69,7 +69,7 @@ const utilities = {
 
     {
       id: "Admin-profile",
-      title: "View Profile",
+      title: "Documents Upload",
       type: "item",
       url: "/Admin/AdminProfile",
       icon: icons.PreviewIcon,
@@ -77,7 +77,7 @@ const utilities = {
     },
     {
       id: "Reports-Dashboard",
-      title: "Reports Dashboard",
+      title: "Vacancy Details",
       type: "item",
       url: "/Admin/ReportsDashboard",
       icon: icons.WorkOutlineIcon,
@@ -86,7 +86,27 @@ const utilities = {
 
     {
       id: "IP-Details",
-      title: "IP Details",
+      title: "Candidate List",
+      type: "item",
+      url: "/Admin/IPDetails",
+      icon: icons.PreviewIcon,
+      breadcrumbs: false,
+    },
+
+
+    {
+      id: "IP-Details",
+      title: "Exam Center",
+      type: "item",
+      url: "/Admin/IPDetails",
+      icon: icons.PreviewIcon,
+      breadcrumbs: false,
+    },
+
+
+    {
+      id: "IP-Details",
+      title: "Generate Hall Ticket",
       type: "item",
       url: "/Admin/IPDetails",
       icon: icons.PreviewIcon,
@@ -95,4 +115,4 @@ const utilities = {
   ],
 };
 
-export default utilities;
+export default examutilities;

@@ -9,7 +9,7 @@ import {
     Grid,
     Typography,
     Paper,
-    Box,    
+    Box,
     createTheme,
 
 
@@ -24,16 +24,14 @@ import RadiobuttonTextbox from '../../components/FormsUI/Radiobutton/radiobutton
 const theme = createTheme();
 const INITIAL_FORM_STATE = {
 
+    facilityID:"",
     officeName: "",
-
-    officerName:"",
+    officerName: "",
     officerNameNew: "",
     officerNewOption: "",
-
     email: "",
     emailNew: "",
     emailNewOption: "",
-    
     mobileNumber: "",
     mobileNumberNew: "",
     mobileNumberNewOption: "",
@@ -73,7 +71,7 @@ const FORM_VALIDATION = Yup.object().shape({
 
 });
 
-const UserManagement = () => {
+const OfficeManagement = () => {
 
     return (
         <Container component={"main"} maxWidth="xl">
@@ -99,7 +97,7 @@ const UserManagement = () => {
                             margin: "3rem",
                         }}
                     >
-                        User Management ( Resetting of Email ID /Phone Number)
+                        Office Management ( Addition /Deactivation of Offices)
                     </Typography>
 
                     <Container maxWidth="xl">
@@ -118,7 +116,7 @@ const UserManagement = () => {
                                             const blob = new Blob([fileData], { type: "text/plain" });
                                             const url = URL.createObjectURL(blob);
                                             const link = document.createElement('a');
-                                            link.download = `${values.employeeNumber}-${values.employeeName}-UserManagement.json`;
+                                            link.download = `${values.employeeNumber}-${values.employeeName}-OfficeManagement.json`;
                                             link.href = url;
                                             link.click();
                                         }}
@@ -246,4 +244,4 @@ const UserManagement = () => {
     );
 };
 
-export default UserManagement;
+export default OfficeManagement;
